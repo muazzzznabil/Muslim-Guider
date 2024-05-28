@@ -37,47 +37,56 @@
     </script>
 
     <<<<<<<<<<<<<< ✨ Codeium Command ⭐>>>>>>>>>>>>>>>>
-        <div id="map" style="width: 800px; height: 600px;"></div>
+        <h2>Qibla Direction on Google Map</h2>
+        <div id="map" style="width:800px;height:600px;"></div>
         <script
-            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCyWggShoELr2-8JYuPV3UZaxwN8_NzcE&callback=initMap"
-            async defer></script>
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCyWggShoELr2-8JYuPV3UZaxwN8_NzcE&libraries=places"></script>
         <script>
             function initMap() {
-                var location = { lat: document.getElementById("latitude").value, lng: document.getElementById("longitude").value };
-                var map = new google.maps.Map(document.getElementById("map"), {
-                    zoom: 12,
-                    center: location,
+                var map = new google.maps.Map(document.getElementById('map'), {
+                    center: {
+                        lat: parseFloat(document.getElementById("latitude").value),
+                        lng: parseFloat(document.getElementById("longitude").value)
+                    },
+                    zoom: 8
                 });
                 var marker = new google.maps.Marker({
-                    position: location,
-                    map: map,
+                    position: {
+                        lat: parseFloat(document.getElementById("latitude").value),
+                        lng: parseFloat(document.getElementById("longitude").value)
+                    },
+                    map: map
                 });
-                var direction = document.getElementById("qibla-direction").innerHTML.split(":")[1];
-                var directionVector = new google.maps.DirectionsService();
-                var request = {
-                    origin: location,
-                    destination: { lat: parseFloat(direction.split(",")[0]), lng: parseFloat(direction.split(",")[1]) },
-                    travelMode: google.maps.TravelMode.DRIVING,
-                    unitSystem: google.maps.UnitSystem.IMPERIAL,
-                    provideRouteAlternatives: true,
+                var direction = document.getElementById("qibla-direction").innerHTML.split(":")[1].trim();
+                var directionRad = Math.PI * direction / 180;
+                var latitudeRad = Math.PI * parseFloat(document.getElementById("latitude").value) / 180;
+                var longitudeRad = Math.PI * parseFloat(document.getElementById("longitude").value) / 180;
+                var y = Math.sin(directionRad) * Math.cos(latitudeRad);
+                var x = Math.cos(directionRad) * Math.sin(longitudeRad);
+                var qiblaLatLong = {
+                    lat: Math.asin(Math.sin(latitudeRad) * Math.cos(directionRad) / Math.sqrt(1 + Math.pow(y, 2))),
+                    lng: longitudeRad + Math.atan2(x, Math.sqrt(1 + Math.pow(y, 2)))
                 };
-                directionVector.route(request, function (response, status) {
-                    if (status === "OK") {
-                        var route = response.routes[0];
-                        var directionsRenderer = new google.maps.DirectionsRenderer({
-                            preserveViewports: false,
-                            directions: route,
-                        });
-                        directionsRenderer.setMap(map);
-                        directionsRenderer.setOptions({
-                            polylineOptions: { strokeColor: "#FF0000", strokeWeight: 10 },
-                        });
-                    }
+                var qiblaMarker = new google.maps.Marker({
+                    position: qiblaLatLong,
+                    map: map
                 });
+                var directionLine = new google.maps.Polyline({
+                    path: [
+                        marker.position,
+                        qiblaMarker.position
+                    ],
+                    geodesic: true,
+                    strokeColor: '#000000',
+                    strokeOpacity: 1.0,
+                    strokeWeight: 2
+                });
+                directionLine.setMap(map);
             }
+            google.maps.event.addDomListener(window, 'load', initMap);
         </script>
 
-        <<<<<<< 02a6fe8f-d725-46c9-ac65-b4741ed4f298>>>>>>>
+        <<<<<<< 6e601bc1-e94c-4468-83d2-2f8668337f43>>>>>>>
 
 </body>
 
