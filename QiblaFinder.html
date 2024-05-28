@@ -12,6 +12,10 @@
     <script src="QiblaFinder.js"></script>
     <h1>Qiblat Finder</h1>
 
+    <button>Find Your Location</button>
+
+
+    <h2>Insert Your Coordinate </h2>
     <form>
         <label for="latitude">Latitude:</label><br>
         <input type="text" id="latitude" name="latitude"><br>
@@ -22,21 +26,6 @@
 
     <p id="qibla-direction"></p>
 
-    <script>
-        function getQiblaDirection() {
-
-event.preventDefault();
-            var lat = document.getElementById("latitude").value;
-            var lng = document.getElementById("longitude").value;
-
-            var url = 'https://api.aladhan.com/v1/qibla/' + lat + '/' + lng;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById("qibla-direction").innerHTML = "Qibla direction: " + data.data.direction;
-                });
-        }
-    </script>
 
 
     <h2>Qibla Direction on Google Map</h2>
