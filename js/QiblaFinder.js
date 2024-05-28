@@ -1,5 +1,4 @@
-function getQiblaDirection() {
-
+function getQiblaDirection(event) {
     event.preventDefault();
     var lat = document.getElementById("latitude").value;
     var lng = document.getElementById("longitude").value;
