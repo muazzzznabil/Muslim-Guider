@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Qiblat Finder</title>
+</head>
+
+<body>
+
+    <script src="QiblaFinder.js"></script>
+    <h1>Qiblat Finder</h1>
+
+    <form>
+        <label for="latitude">Latitude:</label><br>
+        <input type="number" id="latitude" name="latitude"><br>
+        <label for="longitude">Longitude:</label><br>
+        <input type="number" id="longitude" name="longitude"><br>
+        <button type="submit" onclick="getQiblaDirection()">Get Qibla Direction</button>
+    </form>
+
+    <p id="qibla-direction"></p>
+
+    <script>
+        function getQiblaDirection() {
+            var lat = document.getElementById("latitude").value;
+            var lng = document.getElementById("longitude").value;
+
+            var url = 'http://api.aladhan.com/v1/qibla/' + lat + '/' + lng;
+            fetch(url)
+                .then(response => response.json())
+                .then(data => {
+                    document.getElementById("qibla-direction").innerHTML = "Qibla direction: " + data.data.direction;
+                });
+        }
+    </script>
+
+    <<<<<<<<<<<<<< ✨ Codeium Command ⭐>>>>>>>>>>>>>>>>
+        <div id="map" style="width: 800px; height: 600px;"></div>
+        <script
+            src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDCyWggShoELr2-8JYuPV3UZaxwN8_NzcE&callback=initMap"
+            async defer></script>
+        <script>
+            function initMap() {
+                var location = { lat: document.getElementById("latitude").value, lng: document.getElementById("longitude").value };
+                var map = new google.maps.Map(document.getElementById("map"), {
+                    zoom: 12,
+                    center: location,
+                });
+                var marker = new google.maps.Marker({
+                    position: location,
+                    map: map,
+                });
+                var direction = document.getElementById("qibla-direction").innerHTML.split(":")[1];
+                var directionVector = new google.maps.DirectionsService();
+                var request = {
+                    origin: location,
+                    destination: { lat: parseFloat(direction.split(",")[0]), lng: parseFloat(direction.split(",")[1]) },
+                    travelMode: google.maps.TravelMode.DRIVING,
+                    unitSystem: google.maps.UnitSystem.IMPERIAL,
+                    provideRouteAlternatives: true,
+                };
+                directionVector.route(request, function (response, status) {
+                    if (status === "OK") {
+                        var route = response.routes[0];
+                        var directionsRenderer = new google.maps.DirectionsRenderer({
+                            preserveViewports: false,
+                            directions: route,
+                        });
+                        directionsRenderer.setMap(map);
+                        directionsRenderer.setOptions({
+                            polylineOptions: { strokeColor: "#FF0000", strokeWeight: 10 },
+                        });
+                    }
+                });
+            }
+        </script>
+
+        <<<<<<< 02a6fe8f-d725-46c9-ac65-b4741ed4f298>>>>>>>
+
+</body>
+
+</html>
