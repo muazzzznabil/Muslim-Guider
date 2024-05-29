@@ -1,12 +1,16 @@
-function getQiblaDirection(event) {
-    event.preventDefault();
-    var lat = document.getElementById("latitude").value;
-    var lng = document.getElementById("longitude").value;
+const findLocation = () => {
 
-    var url = 'https://api.aladhan.com/v1/qibla/' + lat + '/' + lng;
-    fetch(url)
-        .then(response => response.json())
-        .then(data => {
-            document.getElementById("qibla-direction").innerHTML = "Qibla direction: " + data.data.direction;
-        });
+   const status = document.querySelector(".status");
+
+   const success = (position)=>{
+    console.log(position)
+   } 
+   const error =()=>{
+       status.textContent("Unable to retrieve your location");
+   }
+
+   navigator.geolocation.getCurrentPosition(success,error);
+
 }
+
+document.querySelector('.findCoords').addEventListener('click',findLocation);
