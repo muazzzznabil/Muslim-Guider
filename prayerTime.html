@@ -9,41 +9,38 @@
 </head>
 
 <body>
-
     <div class="content">
         <div class="top">
             <div class="left">
-                <h1>Prayer time</h1>
+                <h1>Prayer Time</h1>
             </div>
             <div class="right">
                 <h1><span id="time"></span></h1>
                 <script src="js/time.js"></script>
             </div>
         </div>
-        <div class="schedule">
-            <form action="pray.js" method="post">
-
-                <table>
-                    <tr>
-                        <td><label>State :</label></td>
-                        <td><input type="text" name="authno" placeholder="E.g:UKXXXXX"></td>
-                    </tr>
-
-                    <tr>
-                        <td><label>City :</label></td>
-                        <td><input type="text" name="name" placeholder="Enter your name"></td>
-                    </tr>
-                </table>
-
-
-            </form>
-        </div>
-
-        <div class="currentLoc">
-            <p id="current">current location</p>
-        </div>
+    </div>
+    <div class="schedule">
+        <form id="prayerForm">
+            <table>
+                <tr>
+                    <td><label for="city">City:</label></td>
+                    <td><input type="text" id="city" name="city" size="30" placeholder="Enter your city"></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <p id="prayerTimes"></p>
+                    </td>
+                </tr>
+            </table>
+            <button type="button" onclick="getPrayerTimes()">Submit</button>
+        </form>
     </div>
 
+    <div class="currentLoc">
+        <p id="current"></p>
+    </div>
+    <script src="js/pray.js"></script>
 </body>
 
 </html>
