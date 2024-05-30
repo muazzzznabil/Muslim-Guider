@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="prayerTime.css">
+    <title>Prayer Time</title>
+</head>
+
+<body>
+
+    <div class="content">
+        <div class="top">
+            <div class="left">
+                <h1>Prayer time</h1>
+            </div>
+            <div class="right">
+                <h1><span id="time"></span></h1>
+                <script src="js/time.js"></script>
+            </div>
+        </div>
+        <div class="schedule">
+            <form action="pray.js" method="post">
+
+                <table>
+                    <tr>
+                        <td><label>State :</label></td>
+                        <td><input type="text" name="authno" placeholder="E.g:UKXXXXX"></td>
+                    </tr>
+
+                    <tr>
+                        <td><label>City :</label></td>
+                        <td><input type="text" name="name" placeholder="Enter your name"></td>
+                    </tr>
+                </table>
+
+
+            </form>
+        </div>
+
+        <div class="currentLoc">
+            <p id="current">current location</p>
+        </div>
+    </div>
+
+</body>
+
+</html>
