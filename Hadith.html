@@ -9,7 +9,7 @@
         <div class="content">
             <div class="top-content">
                 <div class="left-top">
-                    <h1>Hadith: Sahih al-Bukhari</h1><!-- Will Put some hadith name -->
+                    <h1>Hadith:<span id="hadith-book"></span></h1><!-- Will Put some hadith name -->
                 </div>
                 <div class="right-top">
                     <h1><span id="time"></span></h1>
@@ -72,11 +72,12 @@
             </div>       
         </div>
 <script>
-    const apiUrl = 'https://hadithapi.com/api/books?apiKey=$2y$10$b7iVORLvYlYxA4SrjrPGu9OVCA7C6TaOYwxaltQTFfApmMai';
-fetch(apiUrl)
+    const apiUrlBook = 'https://hadithapi.com/api/books?apiKey=$2y$10$b7iVORLvYlYxA4SrjrPGu9OVCA7C6TaOYwxaltQTFfApmMai';
+fetch(apiUrlBook)
 .then(response => response.json())
 .then(data => {
     console.log(data);
+    document.getElementById("hadith-book").innerHTML=""+data.chapters.bookSlug;
 })
 .catch(error => {
     console.log(error);
