@@ -11,7 +11,7 @@
 
     <h1>Qiblat Finder</h1>
 
-    <button class="findCoords">Find Your Location</button>
+    <button class="findCoords" onclick="getLatitude() , getLongitude()">Find Your Location</button>
 
 
     <h2>Insert Your Coordinate </h2>
@@ -20,16 +20,19 @@
         <input type="text" id="latitude" name="latitude"><br>
         <label for="longitude">Longitude:</label><br>
         <input type="text" id="longitude" name="longitude"><br>
-        <button type="submit" onclick="getQiblaDirection()">Get Qibla Direction</button>
+        <button type="submit" onclick="getQiblaDirectionAuto()">Get Qibla Direction</button>
     </form>
 
-    <h4 class="status"></h4>
+
+    <h4 class="latitude"></h4>
+    <h4 class="longitude"></h4>
 
     <p id="qibla-direction"></p>
     <script src="js/QiblaFinder.js"></script>
 
-    <script>
+    <!-- <script>
         function getQiblaDirection() {
+
 
             event.preventDefault();
             var lat = document.getElementById("latitude").value;
@@ -42,7 +45,7 @@
                     document.getElementById("qibla-direction").innerHTML = "Qibla direction: " + data.data.direction;
                 });
         }
-    </script>
+    </script> -->
 
 
     <h2>Qibla Direction on Google Map</h2>
