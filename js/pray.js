@@ -15,11 +15,11 @@ function getPrayerTimes() {
         var prayerTimes = prayerTimeData.data;
         var prayerTimesDiv = document.getElementById("prayerTimes");
         prayerTimesDiv.innerHTML = `
-          <p>Fajr: ${prayerTimes.Fajr}</p>
-          <p>Dhuhr: ${prayerTimes.Dhuhr}</p>
-          <p>Asr: ${prayerTimes.Asr}</p>
-          <p>Maghrib: ${prayerTimes.Maghrib}</p>
-          <p>Isha: ${prayerTimes.Isha}</p>
+          <p>Fajr: ${prayerTimes.fajr}</p>
+          <p>Dhuhr: ${prayerTimes.dhuhr}</p>
+          <p>Asr: ${prayerTimes.asr}</p>
+          <p>Maghrib: ${prayerTimes.maghrib}</p>
+          <p>Isha: ${prayerTimes.isha}</p>
         `;
       } else {
         document.getElementById('prayerTimes').textContent = 'Location not supported for prayer times.';
