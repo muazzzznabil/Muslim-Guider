@@ -59,24 +59,24 @@
 // }
 
 // Uncomment above  code if you want to use it
+// Above is for testing purpose{:
 
-// function getQiblaDirection() {
 
-//   event.preventDefault();
-//   var lat = document.getElementById("latitude").value;
-//   var lng = document.getElementById("longitude").value;
+function getQiblaDirectionManually() {
+  event.preventDefault();
+  var lat = document.getElementById("latitude").value;
+  var lng = document.getElementById("longitude").value;
 
-//   var url = 'https://api.aladhan.com/v1/qibla/' + lat + '/' + lng;
-//   fetch(url)
-//       .then(response => response.json())
-//       .then(data => {
-//           document.getElementById("qibla-direction").innerHTML = "Qibla direction: " + data.data.direction;
+  var url = "https://api.aladhan.com/v1/qibla/" + lat + "/" + lng;
+  fetch(url)
+    .then((response) => response.json())
+    .then((data) => {
+      document.getElementById("qibla-direction").innerHTML =
+        "Qibla direction: " + data.data.direction;
+    });
+}
 
-//       });
-// }
-// testing purpose{:
-
-function findAndBearing() {
+function getQiblaDirectionAuto() {
   const statusLat = document.querySelector(".latitude");
   const statusLng = document.querySelector(".longitude");
 
