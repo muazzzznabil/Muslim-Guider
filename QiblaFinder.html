@@ -10,39 +10,29 @@
 <body>
 
     <h1>Qiblat Finder</h1>
+    <button type="submit" onclick="getQiblaDirectionAuto()">Get Qibla Direction</button>
 
-    <button class="findCoords">Find Your Location</button>
 
-
+    <div class="insertCoords">
+        <form>
+            <label for="latitude">Latitude:</label><br>
+            <input type="text" id="latitude" name="latitude"><br>
+            <label for="longitude">Longitude:</label><br>
+            <input type="text" id="longitude" name="longitude"><br>
+            <button type="submit" onclick="getQiblaDirectionManually()">Get Qibla Direction</button>
+        </form>
+    </div>
     <h2>Insert Your Coordinate </h2>
-    <form>
-        <label for="latitude">Latitude:</label><br>
-        <input type="text" id="latitude" name="latitude"><br>
-        <label for="longitude">Longitude:</label><br>
-        <input type="text" id="longitude" name="longitude"><br>
-        <button type="submit" onclick="getQiblaDirection()">Get Qibla Direction</button>
-    </form>
 
-    <h4 class="status"></h4>
+
+
+    <h4 class="latitude"></h4>
+    <h4 class="longitude"></h4>
 
     <p id="qibla-direction"></p>
     <script src="js/QiblaFinder.js"></script>
 
-    <script>
-        function getQiblaDirection() {
 
-            event.preventDefault();
-            var lat = document.getElementById("latitude").value;
-            var lng = document.getElementById("longitude").value;
-
-            var url = 'https://api.aladhan.com/v1/qibla/' + lat + '/' + lng;
-            fetch(url)
-                .then(response => response.json())
-                .then(data => {
-                    document.getElementById("qibla-direction").innerHTML = "Qibla direction: " + data.data.direction;
-                });
-        }
-    </script>
 
 
     <h2>Qibla Direction on Google Map</h2>

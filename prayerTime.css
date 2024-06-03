@@ -1,0 +1,169 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.content {
+    display: flex;
+    flex-direction: row;
+}
+
+
+.top{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    border-bottom: 3px solid rgb(0, 0, 0);
+    width: 90vw;
+    /* position: relative; */
+    margin: 4vw;
+    overflow: hidden;
+}
+
+.top .left {
+    width: 50%;
+}
+
+#time{
+    width: 100%;
+}
+
+.right  {
+    width: 50%;
+    text-align: end;
+}
+.left h1 .right h1 {
+    margin: 0;
+    font-size: 4vh;
+    width: 100%;
+}
+
+.schedule {
+    width: 100%;
+    max-width: 80vw;
+    background-color: rgb(255, 255, 255);
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+}
+
+#prayerForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#city {
+    width: 100%;
+    max-width: 300px;
+    padding: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+button {
+    padding: 10px 20px;
+    background-color: #007BFF;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+table {
+    width: 100%;
+    margin-top: 20px;
+    border: none;
+}
+
+td {
+    padding: 10px;
+    /* border: 1px solid #ccc; */
+    text-align: center;
+}
+
+.prayer-time {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+.prayer-time:last-child {
+    border-bottom: none;
+}
+
+.prayer-name {
+    font-weight: bold;
+    color: #333;
+}
+
+.prayer-value {
+    color: #3b4046;
+}
+
+.currentLoc {
+    margin-top: 20px;
+}
+
+.currentLoc {
+    margin-top: 20px;
+}
+
+.loc {
+    border-radius: 20px;
+    background-color: #0056b3;
+    padding: 10px;
+}
+
+.loc:hover {
+    background-color: #ccc;
+}
+
+.currentLoc {
+    display: flex;
+    flex-direction: column;
+}
+
+#result {
+  border-bottom: 1px solid #222222;
+}
+
+#share {
+    border-radius: 20px;
+}
+@media (max-width: 768px) {
+    .top {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .left h1, .right h1 {
+        font-size: 20px;
+    }
+
+    #prayerForm {
+        width: 100%;
+    }
+
+    button {
+        width: 100%;
+        padding: 15px;
+    }
+
+    #city {
+        max-width: none;
+        width: 100%;
+    }
+}
