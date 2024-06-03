@@ -9,64 +9,40 @@
 </head>
 
 <body>
-
-
     <div class="container">
-
         <div class="topContent">
-
             <div class="urLocation">
                 <h4>Current Location</h4>
                 <h4 class="latitude"></h4>
                 <h4 class="longitude"></h4>
                 <h4 class="errorMessage"></h4>
             </div>
-
             <div class="buttonGetLocation">
                 <button type="submit" onclick="getQiblaDirectionAuto()" id="GetQiblaAutoButton">Get Qiblat
                     Direction</button>
             </div>
-
             <div class="qiblaInfo">
                 <h4>Qibla Direction :</h4>
                 <p id="qibla-direction"></p>
             </div>
-
-
-
-
             <!-- <div class="insertCoords">
-                <form>
-                    <label for="latitude">Latitude:</label><br>
-                    <input type="text" id="latitude" name="latitude"><br>
-                    <label for="longitude">Longitude:</label><br>
-                    <input type="text" id="longitude" name="longitude"><br>
-                    <button type="submit" onclick="getQiblaDirectionManually()">Get Qibla Direction</button>
-                </form>
-            </div>
-            <h2>Insert Your Coordinate </h2> -->
-
-
+        <form>
+          <label for="latitude">Latitude:</label><br>
+          <input type="text" id="latitude" name="latitude"><br>
+          <label for="longitude">Longitude:</label><br>
+          <input type="text" id="longitude" name="longitude"><br>
+          <button type="submit" onclick="getQiblaDirectionManually()">Get Qibla Direction</button>
+        </form>
+      </div>
+      <h2>Insert Your Coordinate </h2> -->
             <script src="js/QiblaFinder.js"></script>
-
         </div>
-
-
         <div class="bottomContent">
-            <div id="map"></div>
+            <div id="map" style="height: 400px; width: 100%;"></div>
             <script async defer
                 src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYzXj5wF4L6mChyyc5xwfb2QT1QEZ9VN8&callback=initMap"></script>
-
         </div>
-
-
     </div>
-
-
-
-
-
-
 </body>
 
 </html>
