@@ -21,24 +21,23 @@
         </div>
     </div>
     <div class="schedule">
-        <form id="prayerForm">
+        <form id="prayerForm" method="post">
+            <input type="text" id="city" placeholder="Enter your city">
+            <button type="button" onclick="getPrayerTimes()">Get Prayer Time</button>
             <table>
-                <tr>
-                    <td><label for="city">City:</label></td>
-                    <td><input type="text" id="city" name="city" size="30" placeholder="Enter your city"></td>
-                </tr>
                 <tr>
                     <td colspan="2">
                         <p id="prayerTimes"></p>
                     </td>
                 </tr>
             </table>
-            <button type="button" onclick="getPrayerTimes()">Submit</button>
         </form>
     </div>
-
     <div class="currentLoc">
-        <p id="current"></p>
+        <p id="result"></p>
+        <button id="share" class="loc" onclick="findMyCoordinates()">Get your location</button>
+
+        <script src="js/autolocates.js"></script>
     </div>
     <script src="js/pray.js"></script>
 </body>

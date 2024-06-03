@@ -1,11 +1,70 @@
-function getPrayerTimes() {
+var http = new XMLHttpRequest()
+var result = document.querySelector("#result")
+
+document.querySelector("#share").addEventListener("click", () => {
+    findMyCoordinates();
+});
+
+function findMyCoordinates() {
+
+    if (navigator.geolocation) {
+        navigator.geolocation.getCurrentPosition
+            ((position) => {
+                var bdcAPI = 'https://api-bdc.net/data/reverse-geocode-client?latitude=${position.coords.latitude}&longitude=${position.coords.longitude}'
+                getAPI(bdcAPI)
+            },
+                (err) => {
+                    alert(err.message)
+                })
+
+
+
+    } else {
+        alert("Geolocatuin is not supported by your browser")
+    }
+
+}
+
+function getAPI(bdcAPI) {
+
+    http.open("GET", bdcAPI)
+    http.send()
+    http.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+            var response = JSON.parse(this.responseText)
+            var countryName = response.countryName || "Country not found"
+            var city = response.city || "City not found"
+            var locality = response.locality || "Locality not found"
+
+            city = city.replace(/\w\S*/g, function (txt) { return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase(); });
+            result.innerHTML = `${countryName}, ${city}, ${locality}`
+
+
+
+            // Call getZone to get the zone based on city
+            var zone = getZone(city);
+            console.log(" var zone = getZone(city) : " + zone)
+            // Use the zone in subsequent logic (if needed)
+            getPrayerTimesAuto(zone); // Pass the zone to getPrayerTimes
+
+        }
+    };
+}
+
+function getPrayerTimesAuto(area) {
+
     try {
-        var city = document.getElementById('city').value.trim();
-        var area = getZone(city);
-        console.log("manual: ");
+        // var city = document.getElementById('city').value.trim();
+        // var area = getZone(city);
+
+        console.log("parameter parse : ");
+
 
         if (!area) {
             document.getElementById('prayerTimes').textContent = 'Location not supported for prayer times.';
+            console.log("parameter parse : " + this.area);
+            console.log("parameter parse : ");
+
             return;
         } else {
             fetch(`https://api.waktusolat.app/v2/solat/${area}`)
