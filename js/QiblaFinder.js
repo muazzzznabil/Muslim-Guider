@@ -61,7 +61,6 @@
 // Uncomment above  code if you want to use it
 // Above is for testing purpose{:
 
-
 function getQiblaDirectionManually() {
   event.preventDefault();
   var lat = document.getElementById("latitude").value;
@@ -72,13 +71,14 @@ function getQiblaDirectionManually() {
     .then((response) => response.json())
     .then((data) => {
       document.getElementById("qibla-direction").innerHTML =
-        "Qibla direction: " + data.data.direction;
+        data.data.direction;
     });
 }
 
 function getQiblaDirectionAuto() {
   const statusLat = document.querySelector(".latitude");
   const statusLng = document.querySelector(".longitude");
+  const errorMessage = document.querySelector(".errorMessage");
 
   event.preventDefault();
 
@@ -95,12 +95,22 @@ function getQiblaDirectionAuto() {
       .then((response) => response.json())
       .then((data) => {
         document.getElementById("qibla-direction").innerHTML =
-          "Qibla direction: " + data.data.direction;
+          data.data.direction;
         console.log(data.data.direction);
+        console.log(data);
       });
   };
   const error = () => {
-    statusLat.textContent("Unable to retrieve your location");
+    errorMessage.textContent("Unable to retrieve your location");
   };
   navigator.geolocation.getCurrentPosition(success, error);
 }
+
+function initMap() {
+  var location = { lat: -25.363, lng: 131.044 };
+  var map = new google.maps.Map(document.getElementById("map"), {
+    zoom: 4,
+    center: location,
+  });
+}
+AIzaSyA9DC292gu - h9p54peVRXmQqhiEallfJI4;

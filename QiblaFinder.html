@@ -4,38 +4,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="qfStyle.css">
     <title>Qiblat Finder</title>
 </head>
 
 <body>
 
-    <h1>Qiblat Finder</h1>
-    <button type="submit" onclick="getQiblaDirectionAuto()">Get Qibla Direction</button>
+
+    <div class="container">
+
+        <div class="topContent">
+
+            <div class="urLocation">
+                <h4>Current Location</h4>
+                <h4 class="latitude"></h4>
+                <h4 class="longitude"></h4>
+                <h4 class="errorMessage"></h4>
+            </div>
+
+            <div class="buttonGetLocation">
+                <button type="submit" onclick="getQiblaDirectionAuto()" id="GetQiblaAutoButton">Get Qiblat
+                    Direction</button>
+            </div>
+
+            <div class="qiblaInfo">
+                <h4>Qibla Direction :</h4>
+                <p id="qibla-direction"></p>
+            </div>
 
 
-    <div class="insertCoords">
-        <form>
-            <label for="latitude">Latitude:</label><br>
-            <input type="text" id="latitude" name="latitude"><br>
-            <label for="longitude">Longitude:</label><br>
-            <input type="text" id="longitude" name="longitude"><br>
-            <button type="submit" onclick="getQiblaDirectionManually()">Get Qibla Direction</button>
-        </form>
+
+
+            <!-- <div class="insertCoords">
+                <form>
+                    <label for="latitude">Latitude:</label><br>
+                    <input type="text" id="latitude" name="latitude"><br>
+                    <label for="longitude">Longitude:</label><br>
+                    <input type="text" id="longitude" name="longitude"><br>
+                    <button type="submit" onclick="getQiblaDirectionManually()">Get Qibla Direction</button>
+                </form>
+            </div>
+            <h2>Insert Your Coordinate </h2> -->
+
+
+            <script src="js/QiblaFinder.js"></script>
+
+        </div>
+
+
+        <div class="bottomContent">
+            <div id="map"></div>
+            <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBYzXj5wF4L6mChyyc5xwfb2QT1QEZ9VN8&callback=initMap"></script>
+
+        </div>
+
+
     </div>
-    <h2>Insert Your Coordinate </h2>
 
 
 
-    <h4 class="latitude"></h4>
-    <h4 class="longitude"></h4>
-
-    <p id="qibla-direction"></p>
-    <script src="js/QiblaFinder.js"></script>
-
-
-
-
-    <h2>Qibla Direction on Google Map</h2>
 
 
 
