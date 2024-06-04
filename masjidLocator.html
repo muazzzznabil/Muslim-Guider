@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Find Nearby Mosque</title>
+    <link rel="stylesheet" href="masjidLocator.css">
+    <script
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzYlo7cul2YLTHD3hc0sextk-mixpOElU&libraries=places&callback=initMap"
+        async defer></script>
+    <script src="masjidLocator.js"></script>
+</head>
+
+<body>
+    <header>
+        <h1>Masjid Locator - Prototype Version 1 by @fariddin_</h1>
+    </header>
+    <div class="container">
+        <div class="search-bar">
+            <input type="text" placeholder="Enter your location..." id="search" />
+            <button id="searchButton">Search</button>
+        </div>
+        <div id="map"></div>
+        <table id="mosqueTable">
+            <tbody></tbody>
+        </table>
+    </div>
+</body>
+
+</html>
