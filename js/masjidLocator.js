@@ -32,7 +32,7 @@ async function initMap() {
 function searchMosques(location) {
   const request = {
     location: location,
-    radius: "7000", // 5km radius
+    radius: "7000", // 7km radius
     type: ["mosque"],
   };
 
