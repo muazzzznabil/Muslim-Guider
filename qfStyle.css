@@ -57,12 +57,3 @@
   display: flex;
   justify-content: center;
 }
-.compassContainer {
-  text-align: center;
-  margin-top: 20px;
-}
-
-#compass {
-  width: 100px;
-  height: 100px;
-}
