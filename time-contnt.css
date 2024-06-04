@@ -1,0 +1,15 @@
+.top-content{
+    display:flex;
+    justify-content: space-between;
+    margin:0% 12%;
+}
+
+.right-top{
+    right:0;
+
+}
+
+.middle-content hr{
+    border: solid 1px;
+    width:85%;
+}

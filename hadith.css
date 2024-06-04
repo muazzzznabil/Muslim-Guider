@@ -1,18 +1,4 @@
-.top-content{
-    display:flex;
-    justify-content: space-between;
-    margin:0% 12%;
-}
 
-.right-top{
-    right:0;
-
-}
-
-.middle-content hr{
-    border: solid 1px;
-    width:85%;
-}
 
 .bottom-content{
     display:flex;
@@ -60,3 +46,27 @@
 .bottom-right-right,.bottom-right-left h5{
     padding-top: 15%;
 }
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+    margin-right: 120%;
+  }
+  
+  td, th {
+    border: 1px solid #000000;
+    text-align: center;
+    padding: 8px;
+  
+  }
+  th{
+    background-color: #3a4638;
+    color: #fffcfc;
+    text-align: center;
+  }
+  
+  
+  tr:nth-child(even) {
+    background-color: #48b038;
+  }

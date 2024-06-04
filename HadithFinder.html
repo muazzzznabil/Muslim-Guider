@@ -1,16 +1,123 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hadith Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="hadithFinder.css">
+    <link rel="stylesheet" href="time-contnt.css">
 </head>
-<body>
-    
-    <form action="Hadith.html">
-        <label for=""
-        <input type="search" name="hadith-search" id="hadith-search">
 
-    </form>
+<body>
+    <div class="content">
+        <div class="top-content">
+            <div class="left-top">
+                <h1>Find Hadith</h1>
+            </div>
+            <div class="right-top">
+                <h1><span id="time"></span></h1>
+                <script src="js/time.js"></script>
+            </div>    
+        </div>
+        <div class="middle-content">
+            <hr>
+        </div>
+        <div class="head-title">
+            <h2>Find Hadith For Pledge Alegiance</h2>
+        </div>
+
+        <div class="hadith-list">
+            <table>
+                <tr>
+                    <th>Hadith Name</th>
+                    <th>Hadith Writer</th>
+                </tr>
+                <tr>
+                    <td><a href="HadithChapter.html?value=0">Sahih Bukhari</a></td>
+                    <td><a href="HadithChapter.html?value=0">Imam Bukhari</a></td>
+                </tr>
+                <tr>
+                    <td><a href="HadithChapter.html?value=1">Sahih Muslim</a></td>
+                    <td><a href="HadithChapter.html?value=1">Imam Muslim</a></td>
+                </tr>
+                <tr>
+                    <td><a href="HadithChapter.html?value=2">Jami' Al-Tirmidhi</a></td>
+                    <td><a href="HadithChapter.html?value=2">Abu `Isa Muhammad at-Tirmidhi</a></td>
+                </tr>
+                <tr>
+                    <td><a href="HadithChapter.html?value=3">Sunan Abu Dawood</a></td>
+                    <td><a href="HadithChapter.html?value=3">Imam Abu Dawud Sulayman ibn al-Ash'ath as-Sijistani</a></td>
+                </tr>
+                <tr>
+                    <td><a href="HadithChapter.html?value=4">Sunan Ibn-e-Majah</a></td>
+                    <td><a href="HadithChapter.html?value=4">Imam Muhammad bin Yazid Ibn Majah al-Qazvini</a></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>Hadith Name</th>
+                    <th>Hadith Writer</th>
+                <tr>
+                    <tr>
+                        <td><a href="HadithChapter.html?value=5">Sunan An-Nasa`i</a></td>
+                        <td><a href="HadithChapter.html?value=5">Imam Ahmad an-Nasa`i</a></td>
+                    </tr>      
+                    <tr>
+                        <td><a href="HadithChapter.html?value=6">Mishkat Al-Masabih</a></td>
+                        <td><a href="HadithChapter.html?value=6">Imam Khatib at-Tabrizi</a></td>
+                    </tr>  
+                    <tr>
+                        <td><a href="HadithChapter.html?value=7">Musnad Ahmad</a></td>
+                        <td><a href="HadithChapter.html?value=7">Imam Ahmad ibn Hanbal</a></td>
+                    </tr>  
+
+                      <tr>
+                        <td><a href="HadithChapter.html?value=8">Al-Silsila Sahiha</a></td>
+                        <td><a href="HadithChapter.html?value=8">Allama Muhammad Nasir Uddin Al-Bani</a></td>
+                    </tr>  
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <script>
+        document.addEventListener('DOMContentLoaded', (event) => {
+    const links = document.querySelectorAll('.valueLink');
+
+    links.forEach(link => {
+        link.addEventListener('click', function(event) {
+            event.preventDefault();
+            const value = this.getAttribute('data-value');
+            handleLinkClick(value);
+        });
+    });
+
+    function handleLinkClick(value) {
+        fetchBookData(value);
+    }
+
+    function fetchBookData(bookIndex) {
+        const apiUrlBook = 'https://hadithapi.com/api/books?apiKey=$2y$10$b7iVORLvYlYxA4SrjrPGu9OVCA7C6TaOYwxaltQTFfApmMai';
+        
+        fetch(apiUrlBook)
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                const bookName = data.books[bookIndex].bookName;
+                const writerName=data.books[bookIndex].writerName;
+                document.getElementById("hadith-book").innerHTML = bookName;
+                document.getElementById("hadith-writer").innerHTML = writerName;
+            })
+            .catch(error => {
+                console.log(error);
+            });
+    }
+});
+        
+    </script>
 </body>
+
 </html>
