@@ -76,6 +76,7 @@ function getQiblaDirectionAuto() {
         document.getElementById("qibla-direction").innerHTML =
           data.data.direction;
         console.log(data.data.direction);
+        return data.data.direction;
         console.log(data);
       });
   };
@@ -125,8 +126,25 @@ async function initMap() {
       strokeWeight: 2,
     });
 
-    line.setMap(map);
+    const qiblaDirection = getQiblaDirectionAuto();
+
+    if (window.DeviceOrientationEvent) {
+      window.addEventListener(
+        "deviceorientation",
+        (event) => {
+          const compassHeading = event.alpha;
+          document.getElementById("compass").style.transform = `rotate(${
+            compassHeading - qiblaDirection
+          }deg)`;
+        },
+        true
+      );
+    } else {
+      alert("DeviceOrientationEvent is not supported");
+    }
   } catch (error) {
     console.error(error);
   }
 }
+
+initMap();
