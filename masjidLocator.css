@@ -74,9 +74,24 @@ td {
   margin: 0;
 }
 .current-location {
-  background-color: #719274;
+  background-color: #79a37d;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 1rem;
   margin-bottom: 1rem;
+}
+.searchbtn{
+  border-radius: 10px;
+  box-shadow: 0 0 7px black;
+}
+.searchbtn:hover{
+  border-radius: 10px;
+  background-color: #ccc;
+  color:black;
+  font-weight:650;
+  box-shadow: 0 0 3px #4F6F52;
+}
+.searchInput{
+  border-radius: 5px;
+  box-shadow: 0 0 3px black;
 }
