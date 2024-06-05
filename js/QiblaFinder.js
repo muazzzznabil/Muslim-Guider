@@ -114,6 +114,7 @@ async function initMap() {
     document.getElementById("qibla-distance").textContent = `${distance.toFixed(
       2
     )} km`;
+
     // Marker for the Kaaba
     const kaabaMarker = new google.maps.Marker({
       position: kaabaLocation,
