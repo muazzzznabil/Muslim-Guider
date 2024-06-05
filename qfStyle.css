@@ -38,7 +38,10 @@
   width: 50vw;
   padding: 8px;
   border-radius: 5px;
-  background-color: rgb(211, 211, 211);
+  /* background-color: rgb(211, 211, 211); */
+  color: #fffcfc;
+  background-color: #4f6f52;
+
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
@@ -56,4 +59,9 @@
 .bottomContent {
   display: flex;
   justify-content: center;
+}
+hr {
+  border: solid 1px;
+  width: 96%;
+  margin: 2% 10% 2% 2%;
 }

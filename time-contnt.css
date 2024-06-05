@@ -1,17 +1,20 @@
-.top-content{
-    display:flex;
-    justify-content: space-between;
-    margin:0% 10%;
-    flex-wrap: wrap;
+.top-content {
+  display: flex;
+  justify-content: space-between;
+  margin: 0% 10%;
+  flex-wrap: wrap;
 }
 
-.right-top{
-    right:0;
-
+.right-top {
+  right: 0;
 }
 
-.middle-content hr{
-    border: solid 1px;
-    width:96%;
-    margin:2% 10% 2% 2%;
+.middle-content hr {
+  border: solid 1px;
+  width: 96%;
+  margin: 2% 10% 2% 2%;
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
 }
