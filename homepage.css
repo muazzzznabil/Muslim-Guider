@@ -1,84 +1,86 @@
-html {
+html, body {
     height: 100%;
-    background: linear-gradient(to bottom, #1A4D2E, #E8DFCA) no-repeat fixed;
-}
-
-body {
-    font-family: Arial, sans-serif;
     margin: 0;
     padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+.carousel {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+}
+
+.carousel-inner {
+    display: flex;
+    width: 300%;
+    height: 100%;
+    transition: transform 0.3s ease-in-out;
+}
+
+.carousel-item {
+    width: 100%;
+    height: 100%;
+}
+
+.carousel-item img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 .content {
-    align-items: center;
-    justify-content: center;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    z-index: 1;
 }
 
 .title {
     width: 50%;
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 10vh;
     text-align: center;
+    color: whitesmoke;
+    text-shadow: 2px 2px #010101;
+    opacity: 0;
+    transform: scale(0.7);
+    animation: fadeInScale 2s forwards;
+}
+
+@keyframes fadeInScale {
+    0% {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .title h1 {
     font-size: 7vw;
 }
 
-.direc {
-    position: relative;
-    width: 100%;
-    height: 20vw;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    margin-top: 10vh;
+.title p {
+    font-size: 1.5vw;
+    margin-top: 2vh;
+    background-color: #010101;
+    padding: 1%;
 }
 
-a {
-    color: rgb(0, 0, 0);
-    text-decoration: none;
-}
-
-.button {
-    color: rgb(16, 15, 15);
-    background-color: #E8DFCA;
-    height: 10vw;
-    width: 20%;
-    border-radius: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 2vw;
-    border: none;
-    transition: background-color 0.3s, transform 0.3s;
-    text-align: center;
-}
-
-.button:hover {
-    background-color: #333333;
-    transform: scale(1.05);
-    color: white;
-}
-
-@media (max-width: 600px){
-    .direc {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      height: 50vw;
-      margin: 0;
+@media (max-width: 600px) {
+    .title h1 {
+        font-size: 10vw;
     }
 
-    .button {
-        margin-top: 1vw;
-        height: 7vw;
-        width: 30%;
+    .title p {
         font-size: 3vw;
     }
 }
