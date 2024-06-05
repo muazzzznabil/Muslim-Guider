@@ -32,7 +32,7 @@ async function initMap() {
 function searchMosques(location) {
   const request = {
     location: location,
-    radius: "7000", // 7km radius
+    radius: "5000", // 7km radius
     type: ["mosque"],
   };
 
@@ -69,9 +69,7 @@ function createMosqueCard(place) {
   });
 
   const image = document.createElement("img");
-  image.src = place.photos
-    ? place.photos[0].getUrl()
-    : "images/imagePlaceholder.jpg";
+  image.src = place.photos? place.photos[0].getUrl(): "images/imagePlaceholder.jpg";
   image.alt = place.name;
 
   const info = document.createElement("div");
