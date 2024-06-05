@@ -1,7 +1,8 @@
 .top-content{
     display:flex;
     justify-content: space-between;
-    margin:0% 12%;
+    margin:0% 10%;
+    flex-wrap: wrap;
 }
 
 .right-top{
@@ -11,5 +12,6 @@
 
 .middle-content hr{
     border: solid 1px;
-    width:85%;
+    width:96%;
+    margin:2% 10% 2% 2%;
 }

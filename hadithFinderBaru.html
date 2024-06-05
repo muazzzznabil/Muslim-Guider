@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hadith Finder</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="hadithFinder.css">
+    <link rel="stylesheet" href="time-contnt.css">
+    <link rel="stylesheet" href="header.css">
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+</head>
+
+<body>
+    <header>
+        <div class="logo">
+            <a href="#">
+                <img class="logoStyle" src="images/logo2.png"/>
+            </a>  
+        </div>
+
+        <nav class="navbar">
+            <a href="QiblaFinder.html">QIBLA FINDER</a>
+            <a href="masjidLocator.html">MASJID LOCATOR</a>
+            <a href="prayerTime.html">PRAY TIME</a>
+            <a href="hadithFinderBaru.html">HADITH</a>
+        </nav>
+    </header>
+    <div class="content">
+        <div class="top-content">
+            <div class="left-top">
+                <h1>Find Hadith</h1>
+            </div>
+            <div class="right-top">
+                <h1><span id="time"></span></h1>
+                <script src="js/time.js"></script>
+            </div>    
+        </div>
+        <div class="middle-content">
+            <hr>
+        </div>
+        <div class="head-title">
+            <h2>Find Hadith For Pledge Alegiance</h2>
+        </div>
+
+        <div class="hadith-list">
+            <table>
+                <tr>
+                    <th>Hadith Name</th>
+                    <th>Hadith Writer</th>
+                </tr>
+                <tr>
+                    <td><a href="HadithChapterBaru.html?value=0">Sunan Abu Dawood</a></td>
+                    <td><a href="HadithChapterBaru.html?value=0">Imam Abu Dawud Sulayman ibn al-Ash'ath as-Sijistani</a></td>
+                </tr>
+                <tr>
+                    <td><a href="HadithChapterBaru.html?value=1">Musnad Ahmad</a></td>
+                    <td><a href="HadithChapterBaru.html?value=1">Imam Ahmad ibn Hanbal</a></td>
+                </tr>
+                <tr>
+                    <td><a href="HadithChapterBaru.html?value=2">Sahih Bukhari</a></td>
+                    <td><a href="HadithChapterBaru.html?value=2">Imam Bukhari</a></td>
+                </tr>
+                <tr>
+                    <td><a href="HadithChapterBaru.html?value=3">Sunan al-Darimi</a></td>
+                    <td><a href="HadithChapterBaru.html?value=3">Imam Abi Muhammad al-Darimi</a></td>
+                </tr>
+                <tr>
+                    <td><a href="HadithChapterBaru.html?value=4">Sunan Ibn-e-Majah</a></td>
+                    <td><a href="HadithChapterBaru.html?value=4">Imam Muhammad bin Yazid Ibn Majah al-Qazvini</a></td>
+                </tr>
+            </table>
+            <table>
+                <tr>
+                    <th>Hadith Name</th>
+                    <th>Hadith Writer</th>
+                <tr>
+                    <tr>
+                        <td><a href="HadithChapterBaru.html?value=5">Muwatta Imam Malik </a></td>
+                        <td><a href="HadithChapterBaru.html?value=5">Imam Malik ibn Anas</a></td>
+                    </tr>      
+                    <tr>
+                        <td><a href="HadithChapterBaru.html?value=6">Sahih Muslim</a></td>
+                        <td><a href="HadithChapterBaru.html?value=6">Imam Muslim</a></td>
+                    </tr>  
+                    <tr>
+                        <td><a href="HadithChapterBaru.html?value=7">Sunan An-Nasa`i</a></td>
+                        <td><a href="HadithChapterBaru.html?value=7">Imam Ahmad an-Nasa`i</a></td>
+                    </tr>  
+
+                      <tr>
+                        <td><a href="HadithChapterBaru.html?value=8">Jami' Al-Tirmidhi</a></td>
+                        <td><a href="HadithChapterBaru.html?value=8">Abu `Isa Muhammad at-Tirmidhi</a></td>
+                    </tr>  
+                </tr>
+            </table>
+        </div>
+    </div>
+
+
+    <script src="hadithFinderBaru.js">
+     
+//         document.addEventListener('DOMContentLoaded', (event) => {
+//     const links = document.querySelectorAll('.valueLink');
+
+//     links.forEach(link => {
+//         link.addEventListener('click', function(event) {
+//             event.preventDefault();
+//             const value = this.getAttribute('data-value');
+//             handleLinkClick(value);
+//         });
+//     });
+
+//     function handleLinkClick(value) {
+//         fetchBookData(value);
+//     }
+
+//     function fetchBookData(bookIndex) {
+//         const apiUrlBook = 'https://api.hadith.gading.dev/';
+        
+//         fetch(apiUrlBook)
+//             .then(response => response.json())
+//             .then(data => {
+//                 console.log(data);
+//                 const bookName = data.books[bookIndex].bookName;
+//                 const writerName=data.books[bookIndex].writerName;
+//                 document.getElementById("hadith-book").innerHTML = bookName;
+//                 document.getElementById("hadith-writer").innerHTML = writerName;
+//             })
+//             .catch(error => {
+//                 console.log(error);
+//             });
+//     }
+// });
+        
+    </script>
+</body>
+
+</html>

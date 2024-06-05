@@ -7,9 +7,7 @@
   color:#000000;
 }
 a:hover{
-  transform: scale(1.25);
-  transition-duration: 0.2s;
-  color:aqua
+  color:#049b40;
 }
 table {
   font-family: arial, sans-serif;
@@ -25,14 +23,14 @@ td, th {
 
 }
 th{
-  background-color: #3a4638;
+  background-color: #4f6f52;
   color: #fffcfc;
   text-align: center;
 }
 
 
 tr:nth-child(even) {
-  background-color: #48b038;
+  background-color: #e8dfca;
 }
 
 .hadith-list{

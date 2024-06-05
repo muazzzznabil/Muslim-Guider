@@ -1,0 +1,55 @@
+*{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.navbar {
+    background-color:  #1a4d2e;
+    display: flex;
+    float: right;
+    flex-wrap: wrap;
+}
+
+.navbar a {
+    font-size: 16px;
+    color: #F5EFE6;
+    text-decoration: none;
+    text-align: center;
+    padding: 37px 20px 2px;
+}
+
+
+.navbar a:hover {
+    background-color: #F5EFE6;
+    color: rgb(0, 0, 0);
+}
+
+
+
+header {
+    display: flex;
+    background:  #1a4d2e;
+    justify-content: space-between;
+    margin-bottom: 2%;
+    flex-wrap: wrap;
+}
+
+.logoStyle {
+    width: 250px;
+    height: 90px;
+    padding-left: 20%;
+    padding: 20px 20px;
+
+}
+
+.logoStyle:hover {
+    transform: scale(1.1);
+    transition-duration: 0.2s;
+
+}
+
+#accountStyle {
+    font-size: 30px;
+    margin-top: -5px
+}
+

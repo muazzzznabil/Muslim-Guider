@@ -1,5 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Page</title>
+    <style>
+        .highlight {
+            background-color: yellow;
+        }
+    </style>
+</head>
+<body>
+    <h1>Search within this page</h1>
+    <input type="text" id="searchInput" placeholder="Enter word to search">
+    <button onclick="searchWord()">Search</button>
+    <p id="content">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam.
+    </p>
+
+    <script>
+        function searchWord() {
+            // Clear previous highlights
+            let content = document.getElementById('content');
+            content.innerHTML = content.innerHTML.replace(/<span class="highlight">|<\/span>/g, '');
+
+            let searchInput = document.getElementById('searchInput').value;
+            if (searchInput) {
+                let regex = new RegExp(`(${searchInput})`, 'gi');
+                content.innerHTML = content.innerHTML.replace(regex, '<span class="highlight">$1</span>');
+            }
+        }
+    </script>
+</body>
+</html>
+<!-- <!DOCTYPE html>
+<html lang="en">
 
 <head>
   <meta charset="UTF-8">
@@ -53,7 +88,7 @@
   </ul>
 </body>
 
-</html>
+</html> -->
 
 <!-- <!DOCTYPE html>
 <html>
