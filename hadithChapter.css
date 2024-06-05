@@ -1,0 +1,62 @@
+a {
+  text-decoration: none;
+  color: #000000;
+}
+
+a:hover {
+  color: aqua
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+
+}
+
+td,
+th {
+  border: 1px solid #000000;
+  text-align: center;
+  padding: 8px;
+
+}
+
+th {
+  background-color: #1a4d2e;
+  color: #fffcfc;
+  text-align: center;
+}
+
+
+tr:nth-child(even) {
+  background-color: #e8dfca;
+}
+
+.search-bar{
+  display: flex;
+  justify-content: center;
+
+}
+
+#searchInput {
+  font-size: larger;
+  width: 80%;
+  height: 300%;
+  border-radius: 1%;
+  padding:1%;
+}
+#search{
+  margin-left: 2%;;
+  width:15%;
+  font-size: large;
+  background-color: #f5efe6;
+}
+#search:hover{
+ background-color: #1a4d2e;
+ color:white;
+}
+
+.hadith-details,.chapter-list{
+  padding:0% 1%;
+}

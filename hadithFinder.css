@@ -1,0 +1,41 @@
+.head-title{
+    display: flex;
+    justify-content: center;
+}
+ a{
+  text-decoration: none;
+  color:#000000;
+}
+a:hover{
+  color:#049b40;
+}
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  margin:2%
+}
+
+td, th {
+  border: 1px solid #000000;
+  text-align: left;
+  padding: 8px;
+
+}
+th{
+  background-color: #4f6f52;
+  color: #fffcfc;
+  text-align: center;
+}
+
+
+tr:nth-child(even) {
+  background-color: #e8dfca;
+}
+
+.hadith-list{
+  display:flex;
+  justify-content: space-between;
+  
+}
+
