@@ -104,12 +104,7 @@ function displayCurrentLocation() {
   const locationTitle = document.createElement("h2");
   locationTitle.textContent = "Current Location";
 
-
-
   const locationCoords = document.createElement("p");
-
- 
-
 
   locationCoords.textContent = `Latitude: ${currentPos.lat}, Longitude: ${currentPos.lng}`;
 
