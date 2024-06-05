@@ -30,7 +30,7 @@
   color: #fffcfc;
   background-color: #4f6f52;
   width: 230px;
-  height: 100px;
+  height: 130px;
   border-radius: 10px;
   right: 40px;
   top: 100px;
@@ -71,9 +71,9 @@ hr {
   margin: 2% 10% 2% 2%;
 }
 #qibla-direction {
-  margin-top: 10px;
+  /* margin-top: 10px; */
+  /* padding-bottom: 0px; */
 }
-
 @media screen and (max-width: 600px) {
   .topContent {
     text-align: center;
@@ -105,7 +105,7 @@ hr {
     margin-top: 20px;
     margin-bottom: 20px;
     text-align: center;
-    padding: 30px 0 0 0;
+    padding: 30px;
   }
   #map {
     width: 100vw;
