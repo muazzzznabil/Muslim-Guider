@@ -73,10 +73,13 @@ function getQiblaDirectionAuto() {
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
+        let direction = data.data.direction;
+        let directionRounded = Math.round(direction * 10) / 10;
+
         document.getElementById("qibla-direction").innerHTML =
-          data.data.direction;
+          directionRounded + "°";
         console.log(data.data.direction);
-        console.log(data);
+        console.log(directionRounded);
       });
   };
   const error = () => {
