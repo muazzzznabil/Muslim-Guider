@@ -108,6 +108,12 @@ async function initMap() {
 
     // Coordinates for the Kaaba
     const kaabaLocation = { lat: 21.4225, lng: 39.8262 };
+    const distance = calculateDistance(location, kaabaLocation);
+
+    // Update the UI element with the distance
+    document.getElementById("qibla-distance").textContent = `${distance.toFixed(
+      2
+    )} km`;
 
     // Marker for the Kaaba
     const kaabaMarker = new google.maps.Marker({
@@ -193,4 +199,19 @@ async function initMap() {
   } catch (error) {
     console.error(error);
   }
+}
+function calculateDistance(userLocation, kaabaLocation) {
+  const p1Lat = (userLocation.lat * Math.PI) / 180;
+  const p2Lat = (kaabaLocation.lat * Math.PI) / 180;
+  const dLat = p2Lat - p1Lat;
+  const dLon = ((kaabaLocation.lng - userLocation.lng) * Math.PI) / 180;
+
+  const R = 6371e3; // Earth's radius in kilometers
+
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(p1Lat) * Math.cos(p2Lat) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  return R * c;
 }
