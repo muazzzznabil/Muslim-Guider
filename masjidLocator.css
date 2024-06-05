@@ -3,13 +3,13 @@ body {
   margin: 0;
   padding: 0;
 }
-header {
+/* header {
   background-color: #333;
   color: white;
   padding: 1rem;
   text-align: center;
-}
-.container {
+} */
+.containers {
   padding: 1rem;
 }
 .search-bar {
@@ -30,6 +30,9 @@ header {
   color: white;
   border: none;
   cursor: pointer;
+}
+.template-card{
+  padding:1rem;
 }
 .map {
   width: 100%;

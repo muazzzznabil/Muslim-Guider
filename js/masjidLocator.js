@@ -96,14 +96,21 @@ function createMosqueCard(place) {
 }
 
 function displayCurrentLocation() {
-  const container = document.querySelector(".container");
+  const container = document.querySelector(".containers");
+
   const currentLocationDiv = document.createElement("div");
   currentLocationDiv.classList.add("current-location");
 
   const locationTitle = document.createElement("h2");
   locationTitle.textContent = "Current Location";
 
+
+
   const locationCoords = document.createElement("p");
+
+ 
+
+
   locationCoords.textContent = `Latitude: ${currentPos.lat}, Longitude: ${currentPos.lng}`;
 
   geocoder.geocode({ location: currentPos }, (results, status) => {
