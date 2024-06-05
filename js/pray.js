@@ -21,6 +21,7 @@ function getPrayerTimes() {
                     var isha = new Date(prayerTimes.isha * 1000).toLocaleTimeString();
 
                     prayerTimesDiv.innerHTML = `
+                    <div class="resultPray">
                         <div class="prayer-time">
                             <span class="prayer-name">Fajr:</span> 
                             <span class="prayer-value">${fajr}</span>
@@ -40,6 +41,7 @@ function getPrayerTimes() {
                         <div class="prayer-time">
                             <span class="prayer-name">Isha:</span> 
                             <span class="prayer-value">${isha}</span>
+                        </div>
                         </div>
                     `;
                 })
