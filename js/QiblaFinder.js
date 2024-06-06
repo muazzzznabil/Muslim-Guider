@@ -1,3 +1,7 @@
+let currentPos;
+let map;
+let geocoder;
+
 const getLatitude = () => {
   return new Promise((resolve, reject) => {
     const status = document.querySelector(".latitude");
@@ -88,116 +92,139 @@ function getQiblaDirectionAuto() {
   navigator.geolocation.getCurrentPosition(success, error);
 }
 
-async function initMap() {
-  try {
-    const lat = await getLatitude();
-    const lng = await getLongitude();
-    const location = { lat: lat, lng: lng };
+async function initMap(lat, lng) {
+  geocoder = new google.maps.Geocoder();
 
-    const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 18, // Increase the zoom level for a closer view
-      center: location,
-    });
+  if (navigator.geolocation) {
+    if (lat && lng) {
+      currentPos = {
+        lat: lat,
+        lng: lng,
+      };
+    } else {
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          currentPos = {
+            lat: position.coords.latitude,
+            lng: position.coords.longitude,
+          };
+        },
+        () => {
+          handleLocationError(true, map.getCenter());
+        }
+      );
+    }
 
-    // Marker for user's location
-    const userMarker = new google.maps.Marker({
-      position: location,
-      map: map,
-      title: "Your Location",
-    });
+    try {
+      const lat = await getLatitude();
+      const lng = await getLongitude();
+      const location = { lat: lat, lng: lng };
 
-    // Coordinates for the Kaaba
-    const kaabaLocation = { lat: 21.4225, lng: 39.8262 };
-    const distance = calculateDistance(location, kaabaLocation);
-
-    // Update the UI element with the distance
-    document.getElementById("qibla-distance").textContent = `${distance.toFixed(
-      2
-    )} km`;
-
-    // Marker for the Kaaba
-    const kaabaMarker = new google.maps.Marker({
-      position: kaabaLocation,
-      map: map,
-      title: "Kaaba",
-      icon: {
-        url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", // Change the icon if desired
-      },
-    });
-
-    // Optionally, you can draw a line between the user's location and the Kaaba
-    const line = new google.maps.Polyline({
-      path: [location, kaabaLocation],
-      geodesic: true,
-      strokeColor: "#FF0000",
-      strokeOpacity: 1.0,
-      strokeWeight: 2,
-    });
-
-    line.setMap(map);
-
-    // Create the search box and link it to the UI element.
-    const input = document.getElementById("pac-input");
-    const searchBox = new google.maps.places.SearchBox(input);
-
-    // Bias the SearchBox results towards current map's viewport.
-    map.addListener("bounds_changed", () => {
-      searchBox.setBounds(map.getBounds());
-    });
-
-    let markers = [];
-
-    // Listen for the event fired when the user selects a prediction and retrieve
-    // more details for that place.
-    searchBox.addListener("places_changed", () => {
-      const places = searchBox.getPlaces();
-
-      if (places.length == 0) {
-        return;
-      }
-
-      // Clear out the old markers.
-      markers.forEach((marker) => {
-        marker.setMap(null);
+      const map = new google.maps.Map(document.getElementById("map"), {
+        zoom: 18, // Increase the zoom level for a closer view
+        center: location,
       });
-      markers = [];
 
-      // For each place, get the icon, name and location.
-      const bounds = new google.maps.LatLngBounds();
-      places.forEach((place) => {
-        if (!place.geometry || !place.geometry.location) {
-          console.log("Returned place contains no geometry");
+      // Marker for user's
+      const userMarker = new google.maps.Marker({
+        position: location,
+        map: map,
+        title: "Your Location",
+      });
+
+      // Coordinates for the Kaaba
+      const kaabaLocation = { lat: 21.4225, lng: 39.8262 };
+      const distance = calculateDistance(location, kaabaLocation);
+
+      // Update the UI element with the distance
+      document.getElementById(
+        "qibla-distance"
+      ).textContent = `${distance.toFixed(2)} km`;
+
+      // Marker for the Kaaba
+      const kaabaMarker = new google.maps.Marker({
+        position: kaabaLocation,
+        map: map,
+        title: "Kaaba",
+        icon: {
+          url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png", // Change the icon if desired
+        },
+      });
+
+      // Optionally, you can draw a line between the user's location and the Kaaba
+      const line = new google.maps.Polyline({
+        path: [location, kaabaLocation],
+        geodesic: true,
+        strokeColor: "#FF0000",
+        strokeOpacity: 1.0,
+        strokeWeight: 2,
+      });
+
+      line.setMap(map);
+
+      // Create the search box and link it to the UI element.
+      const input = document.getElementById("pac-input");
+      const searchBox = new google.maps.places.SearchBox(input);
+
+      // Bias the SearchBox results towards current map's viewport.
+      map.addListener("bounds_changed", () => {
+        searchBox.setBounds(map.getBounds());
+      });
+
+      let markers = [];
+
+      // Listen for the event fired when the user selects a prediction and retrieve
+      // more details for that place.
+      searchBox.addListener("places_changed", () => {
+        const places = searchBox.getPlaces();
+
+        if (places.length == 0) {
           return;
         }
-        const icon = {
-          url: place.icon,
-          size: new google.maps.Size(71, 71),
-          origin: new google.maps.Point(0, 0),
-          anchor: new google.maps.Point(17, 34),
-          scaledSize: new google.maps.Size(25, 25),
-        };
 
-        // Create a marker for each place.
-        markers.push(
-          new google.maps.Marker({
-            map,
-            icon,
-            title: place.name,
-            position: place.geometry.location,
-          })
-        );
+        // Clear out the old markers.
+        markers.forEach((marker) => {
+          marker.setMap(null);
+        });
+        markers = [];
 
-        if (place.geometry.viewport) {
-          // Only geocodes have viewport.
-          bounds.union(place.geometry.viewport);
-        } else {
-          bounds.extend(place.geometry.location);
-        }
+        // For each place, get the icon, name and location.
+        const bounds = new google.maps.LatLngBounds();
+        places.forEach((place) => {
+          if (!place.geometry || !place.geometry.location) {
+            console.log("Returned place contains no geometry");
+            return;
+          }
+          const icon = {
+            url: place.icon,
+            size: new google.maps.Size(71, 71),
+            origin: new google.maps.Point(0, 0),
+            anchor: new google.maps.Point(17, 34),
+            scaledSize: new google.maps.Size(25, 25),
+          };
+
+          // Create a marker for each place.
+          markers.push(
+            new google.maps.Marker({
+              map,
+              icon,
+              title: place.name,
+              position: place.geometry.location,
+            })
+          );
+
+          if (place.geometry.viewport) {
+            // Only geocodes have viewport.
+            bounds.union(place.geometry.viewport);
+          } else {
+            bounds.extend(place.geometry.location);
+          }
+        });
+        map.fitBounds(bounds);
       });
-      map.fitBounds(bounds);
-    });
-  } catch (error) {
-    console.error(error);
+    } catch (error) {
+      console.error(error);
+    }
   }
 }
 function calculateDistance(userLocation, kaabaLocation) {
@@ -214,4 +241,26 @@ function calculateDistance(userLocation, kaabaLocation) {
   const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
 
   return R * c;
+}
+
+// testing
+function handleSearch() {
+  const address = document.getElementById("search").value;
+  geocodeAddress(address);
+}
+
+function geocodeAddress(address) {
+  geocoder.geocode({ address: address }, (results, status) => {
+    if (status === "OK") {
+      const location = results[0].geometry.location;
+      const latitude = location.lat();
+      const longitude = location.lng();
+
+      initMap(latitude, longitude);
+
+      console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+  });
 }
