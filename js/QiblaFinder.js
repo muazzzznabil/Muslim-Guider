@@ -42,23 +42,8 @@ const getLongitude = () => {
   });
 };
 
-// Method to get Qibla Direction Manually :
-function getQiblaDirectionManually() {
-  event.preventDefault();
-  var lat = document.getElementById("latitude").value;
-  var lng = document.getElementById("longitude").value;
-
-  var url = "https://api.aladhan.com/v1/qibla/" + lat + "/" + lng;
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      document.getElementById("qibla-direction").innerHTML =
-        data.data.direction;
-    });
-}
-
 // Method to get Qibla Direction Automatically :
-function getQiblaDirectionAuto() {
+function getQiblaDirectionAuto(longitude, latitude) {
   const statusLat = document.querySelector(".latitude");
   const statusLng = document.querySelector(".longitude");
   const errorMessage = document.querySelector(".errorMessage");
@@ -115,9 +100,11 @@ async function initMap(lat, lng) {
       );
     }
 
+    console.log(lat + " and " + lng);
+
     try {
-      const lat = await getLatitude();
-      const lng = await getLongitude();
+      // const lat = await getLatitude();
+      // const lng = await getLongitude();
       const location = { lat: lat, lng: lng };
 
       const map = new google.maps.Map(document.getElementById("map"), {
@@ -246,7 +233,11 @@ function calculateDistance(userLocation, kaabaLocation) {
 // testing
 function handleSearch() {
   const address = document.getElementById("search").value;
-  geocodeAddress(address);
+  if (address) {
+    geocodeAddress(address);
+  } else {
+    getQiblaDirectionAuto();
+  }
 }
 
 function geocodeAddress(address) {
@@ -257,6 +248,7 @@ function geocodeAddress(address) {
       const longitude = location.lng();
 
       initMap(latitude, longitude);
+      getQiblaDirectionAuto(longitude, latitude);
 
       console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
     } else {

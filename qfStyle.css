@@ -34,7 +34,7 @@ body {
   color: #fffcfc;
   background-color: #4f6f52;
   width: 230px;
-  height: 130px;
+  height: auto;
   border-radius: 10px;
   right: 40px;
   top: 100px;
@@ -68,6 +68,7 @@ body {
   /* box-shadow: 5px 5px 5px #4f6f52; */
 
   margin-top: 10px;
+  margin-bottom: 30px;
 }
 
 .bottomContent {
@@ -136,9 +137,9 @@ hr {
   margin: 10px;
 }
 .search-bar button {
-  width: 5vw;
+  width: auto;
   height: 4vh;
-  /* padding: 0.5rem; */
+  padding: 0 15px;
   font-size: 1rem;
   background-color: #4f6f52;
   color: white;
