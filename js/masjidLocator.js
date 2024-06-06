@@ -43,11 +43,17 @@ function searchMosques(location) {
   service.nearbySearch(request, callback);
 }
 
+let markers = [];
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     results.sort((a, b) => b.rating - a.rating); // Sort results by rating in descending order
     const tableBody = document.querySelector("#mosqueTable tbody");
     tableBody.innerHTML = ""; // Clear previous results
+
+    // Clear previous markers
+    markers.forEach((marker) => marker.setMap(null));
+    markers = [];
+
     let row;
     for (let i = 0; i < results.length; i++) {
       if (i % 4 === 0) {
@@ -57,6 +63,14 @@ function callback(results, status) {
       const cell = document.createElement("td");
       cell.appendChild(createMosqueCard(results[i]));
       row.appendChild(cell);
+
+      // Create marker for each mosque
+      const marker = new google.maps.Marker({
+        position: results[i].geometry.location,
+        map: map,
+        title: results[i].name,
+      });
+      markers.push(marker);
     }
   }
 }
@@ -72,7 +86,9 @@ function createMosqueCard(place) {
   });
 
   const image = document.createElement("img");
-  image.src = place.photos ? place.photos[0].getUrl() : "images/imagePlaceholder.jpg";
+  image.src = place.photos
+    ? place.photos[0].getUrl()
+    : "images/imagePlaceholder.jpg";
   image.alt = place.name;
 
   const info = document.createElement("div");
@@ -113,7 +129,8 @@ function displayCurrentLocation() {
     if (status === "OK") {
       const locationDetails = results[0].address_components;
       const city =
-        locationDetails.find((comp) => comp.types.includes("locality"))?.long_name || "";
+        locationDetails.find((comp) => comp.types.includes("locality"))
+          ?.long_name || "";
       const district =
         locationDetails.find((comp) =>
           comp.types.includes("administrative_area_level_2")
@@ -157,7 +174,8 @@ function geocodeAddress(address) {
         if (status === "OK") {
           const locationDetails = results[0].address_components;
           const city =
-            locationDetails.find((comp) => comp.types.includes("locality"))?.long_name || "";
+            locationDetails.find((comp) => comp.types.includes("locality"))
+              ?.long_name || "";
           const district =
             locationDetails.find((comp) =>
               comp.types.includes("administrative_area_level_2")
