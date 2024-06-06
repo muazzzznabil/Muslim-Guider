@@ -16,7 +16,7 @@ async function initMap() {
 
         map = new google.maps.Map(document.getElementById("map"), {
           center: currentPos,
-          zoom: 15,
+          zoom: 13.1,
         });
 
         searchMosques(currentPos);
