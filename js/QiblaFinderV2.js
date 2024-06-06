@@ -45,7 +45,6 @@ const getLongitude = () => {
 function handleSearchBar() {
   const address = document.getElementById("search").value;
   geocodeAddress(address);
-  getQiblaDirectionAuto(longitude, latitude);
 }
 async function handleSearchButton() {
   const lat = await getLatitude();
@@ -185,7 +184,7 @@ function geocodeAddress(address) {
       initMap(latitude, longitude);
       getQiblaDirectionAuto(longitude, latitude);
 
-      console.log(`Latitude: ${latitude}, Longitude: ${longitude}`);
+      console.log(`Latitude: ${latitude}, and Longitude: ${longitude}`);
     } else {
       alert("Geocode was not successful for the following reason: " + status);
     }
