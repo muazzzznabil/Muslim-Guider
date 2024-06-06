@@ -1,21 +1,13 @@
-
 body {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
 }
-/* header {
-  background-color: #333;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-} */
 .containers {
   padding: 1rem;
-  
 }
-.logoFoot{
-  text-align:center;
+.logoFoot {
+  text-align: center;
 }
 .search-bar {
   display: flex;
@@ -35,9 +27,7 @@ body {
   color: white;
   border: none;
   cursor: pointer;
-}
-.template-card {
-  padding: 1rem;
+  border-radius: 5px;
 }
 .map {
   width: 100%;
@@ -62,7 +52,6 @@ td {
   margin-bottom: 1rem;
   cursor: pointer;
   transition: background-color 0.3s;
-  
 }
 .mosque-card:hover {
   background-color: #f0f0f0;
@@ -92,7 +81,6 @@ td {
   box-shadow: 0 0 7px black;
 }
 .searchbtn:hover {
-  border-radius: 10px;
   background-color: #ccc;
   color: black;
   font-weight: 650;
@@ -101,4 +89,14 @@ td {
 .searchInput {
   border-radius: 5px;
   box-shadow: 0 0 3px black;
+}
+@media (max-width: 768px) {
+  .search-bar input, .search-bar button {
+      width: 100%;
+      margin-bottom: 1rem;
+  }
+  td {
+      width: 100%;
+      display: block;
+  }
 }
