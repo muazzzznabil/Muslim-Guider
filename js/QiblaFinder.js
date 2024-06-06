@@ -233,11 +233,7 @@ function calculateDistance(userLocation, kaabaLocation) {
 // testing
 function handleSearch() {
   const address = document.getElementById("search").value;
-  if (address) {
-    geocodeAddress(address);
-  } else {
-    getQiblaDirectionAuto();
-  }
+  geocodeAddress(address);
 }
 
 function geocodeAddress(address) {
