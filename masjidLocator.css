@@ -1,4 +1,4 @@
-body {
+dbody {
   font-family: Arial, sans-serif;
   margin: 0;
   padding: 0;
@@ -26,13 +26,13 @@ body {
   width: 18%;
   padding: 0.5rem;
   font-size: 1rem;
-  background-color: #4F6F52;
+  background-color: #4f6f52;
   color: white;
   border: none;
   cursor: pointer;
 }
-.template-card{
-  padding:1rem;
+.template-card {
+  padding: 1rem;
 }
 .map {
   width: 100%;
@@ -80,18 +80,18 @@ td {
   padding: 1rem;
   margin-bottom: 1rem;
 }
-.searchbtn{
+.searchbtn {
   border-radius: 10px;
   box-shadow: 0 0 7px black;
 }
-.searchbtn:hover{
+.searchbtn:hover {
   border-radius: 10px;
   background-color: #ccc;
-  color:black;
-  font-weight:650;
-  box-shadow: 0 0 3px #4F6F52;
+  color: black;
+  font-weight: 650;
+  box-shadow: 0 0 3px #4f6f52;
 }
-.searchInput{
+.searchInput {
   border-radius: 5px;
   box-shadow: 0 0 3px black;
 }
