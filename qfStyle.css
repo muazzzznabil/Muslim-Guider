@@ -18,7 +18,7 @@ body {
   justify-content: space-around;
   align-items: center;
   /* margin: 0% 12%; */
-  margin: 20px;
+  margin: 1vw;
 }
 
 .urLocation {
@@ -49,7 +49,7 @@ body {
   /* background-color: rgb(211, 211, 211); */
   color: #fffcfc;
   background-color: #4f6f52;
-  margin: 0 100px 0 0;
+  margin: 0 4vw 0 0;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
@@ -75,11 +75,7 @@ body {
   display: flex;
   justify-content: center;
 }
-hr {
-  border: solid 1px;
-  width: 96%;
-  margin: 2% 10% 2% 2%;
-}
+
 #qibla-direction {
   /* margin-top: 10px; */
   /* padding-bottom: 0px; */
@@ -138,8 +134,8 @@ hr {
 }
 .search-bar button {
   width: auto;
-  height: 4vh;
-  padding: 0 15px;
+  height: 39px;
+  padding: 0 19px;
   font-size: 1rem;
   background-color: #4f6f52;
   color: white;
