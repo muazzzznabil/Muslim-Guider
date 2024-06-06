@@ -15,7 +15,7 @@
 <body>
     <header>
         <div class="logo">
-            <a href="#">
+            <a href="index.html">
                 <img class="logoStyle" src="images/logo2new.png" />
 
             </a>
@@ -39,34 +39,36 @@
                 <script src="js/time.js"></script>
             </div>
         </div>
-        <hr>
+    </div>
+
+    <hr>
 
 
 
-        <div class="container">
-            <div class="topContent">
-                <div class="urLocation">
-                    <h4>Current Location : </h4>
-                    <br>
-                    <h4 class="latitude"></h4>
-                    <h4 class="longitude"></h4>
-                    <p id="city"></p>
-                    <h4 class="errorMessage"></h4>
-                </div>
-                <div class="buttonGetLocation">
-                    <button type="submit" onclick="getQiblaDirectionAuto()" id="GetQiblaAutoButton">Get Qiblat
-                        Direction</button>
-                </div>
-                <div class="qiblaInfo">
-                    <h4 style="display: inline;">Qibla Direction :</h4>
-                    <p id="qibla-direction" style=" font-weight: 800;"></p>
-                    <br>
-                    <h4 style="display: inline;">Kaabah Distance :</h4>
-                    <p id="qibla-distance" style=" font-weight: 800;"></p>
-                </div>
+    <div class="container">
+        <div class="topContent">
+            <div class="urLocation">
+                <h4>Current Location : </h4>
+                <br>
+                <h4 class="latitude"></h4>
+                <h4 class="longitude"></h4>
+                <p id="city"></p>
+                <h4 class="errorMessage"></h4>
+            </div>
+            <div class="buttonGetLocation">
+                <button type="submit" onclick="getQiblaDirectionAuto()" id="GetQiblaAutoButton">Get Qiblat
+                    Direction</button>
+            </div>
+            <div class="qiblaInfo">
+                <h4 style="display: inline;">Qibla Direction :</h4>
+                <p id="qibla-direction" style=" font-weight: 800;"></p>
+                <br>
+                <h4 style="display: inline;">Kaabah Distance :</h4>
+                <p id="qibla-distance" style=" font-weight: 800;"></p>
+            </div>
 
 
-                <!-- <div class="insertCoords">
+            <!-- <div class="insertCoords">
         <form>
           <label for="latitude">Latitude:</label><br>
           <input type="text" id="latitude" name="latitude"><br>
@@ -76,14 +78,20 @@
         </form>
       </div>
       <h2>Insert Your Coordinate </h2> -->
-                <script src="js/QiblaFinder.js"></script>
-            </div>
-            <div class="bottomContent">
-                <div id="map" style="height: 400px; width: 100%;"></div>
-                <script async defer
-                    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzYlo7cul2YLTHD3hc0sextk-mixpOElU&callback=initMap"></script>
-            </div>
+            <script src="js/QiblaFinder.js"></script>
         </div>
+
+        <div class="search-bar">
+            <input type="text" placeholder="Enter your location..." id="search" class="searchInput" />
+            <button id="searchButton" class="searchbtn">Search</button>
+        </div>
+
+        <div class="bottomContent">
+            <div id="map" style="height: 400px; width: 100%;"></div>
+            <script async defer
+                src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAzYlo7cul2YLTHD3hc0sextk-mixpOElU&callback=initMap"></script>
+        </div>
+    </div>
 </body>
 
 </html>

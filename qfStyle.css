@@ -123,3 +123,42 @@ hr {
     margin-bottom: 20px;
   }
 }
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.search-bar input {
+  width: 30vw;
+  padding: 0.5rem;
+  font-size: 1rem;
+  margin: 10px;
+}
+.search-bar button {
+  width: 5vw;
+  height: 4vh;
+  /* padding: 0.5rem; */
+  font-size: 1rem;
+  background-color: #4f6f52;
+  color: white;
+  border: none;
+  transition: 0.5s;
+
+  cursor: pointer;
+}
+.searchbtn {
+  border-radius: 5px;
+  box-shadow: 0 0 7px black;
+}
+.searchbtn:hover {
+  border-radius: 5px;
+  background-color: #ccc;
+  color: black;
+  font-weight: 650;
+  box-shadow: 0 0 3px #4f6f52;
+}
+.searchInput {
+  border-radius: 5px;
+  box-shadow: 0 0 3px black;
+}
