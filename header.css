@@ -1,6 +1,5 @@
 *{
     box-sizing: border-box;
- 
 }
 .navbar {
     background-color:  #1a4d2e;
@@ -51,7 +50,3 @@ header {
     font-size: 30px;
     margin-top: -5px
 }
-
-/* @media width {
-    
-} */

@@ -12,9 +12,9 @@
 <body>
     <header>
         <div class="logo">
-            <a href="#">
+            <a href="index.html">
                 <img class="logoStyle" src="images/logo2new.png" />
-            </a>  
+            </a>
         </div>
 
         <nav class="navbar">
@@ -24,26 +24,52 @@
             <a href="hadithFinderBaru.html">HADITH</a>
         </nav>
     </header>
-    <section class="carousel">
-        <div class="carousel-inner">
-            <div class="carousel-item active">
-                <img src="images/slide1.jpg" alt="Background 1">
-            </div>
-            <div class="carousel-item">
-                <img src="images/slide2.jpeg" alt="Background 2">
-            </div>
-            <div class="carousel-item">
-                <img src="images/slide3.jpeg" alt="Background 3">
+    <div class="slideshow-container">
+
+        <div class="mySlides fade">
+            <img src="images/slide1.jpg" alt="Background 1">
+            <div class="text">
+                <h1>Welcome to Muslim Guider</h1>
+                <p>“Maka janganlah kamu merasa lemah dan janganlah kamu berputus asa, padahal kamulah orang yang lebih
+                    tinggi kedudukannya jika kamu orang yang beriman.” [Surah Ali Imran: 139] </p>
             </div>
         </div>
-    </section>
-    <section class="content">
-        <div class="title">
-            <h1>Welcome to Muslim Guider</h1>
-            <p>“Maka janganlah kamu merasa lemah dan janganlah kamu berputus asa, padahal kamulah orang yang lebih tinggi kedudukannya jika kamu orang yang beriman.” [Surah Ali Imran: 139] </p>
+
+        <div class="mySlides fade">
+            <img src="images/slide2.jpeg" alt="Background 2">
+            <div class="text">
+                <h1>Welcome to Muslim Guider</h1>
+                <p>“Maka janganlah kamu merasa lemah dan janganlah kamu berputus asa, padahal kamulah orang yang lebih
+                    tinggi kedudukannya jika kamu orang yang beriman.” [Surah Ali Imran: 139] </p>
+            </div>
         </div>
-    </section>
-    <script src="carousel.js"></script>
+
+        <div class="mySlides fade">
+            <img src="images/slide3.jpeg" alt="Background 3">
+            <div class="text">
+                <h1>Welcome to Muslim Guider</h1>
+                <p>“Maka janganlah kamu merasa lemah dan janganlah kamu berputus asa, padahal kamulah orang yang lebih
+                    tinggi kedudukannya jika kamu orang yang beriman.” [Surah Ali Imran: 139] </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        var slideIndex = 0;
+        showSlides();
+
+        function showSlides() {
+            var i;
+            var slides = document.getElementsByClassName("mySlides");
+            for (i = 0; i < slides.length; i++) {
+                slides[i].style.display = "none";
+            }
+            slideIndex++;
+            if (slideIndex > slides.length) { slideIndex = 1 }
+            slides[slideIndex - 1].style.display = "block";
+            setTimeout(showSlides, 2000); // Change image every 2 seconds
+        }
+    </script>
 </body>
 
 </html>
