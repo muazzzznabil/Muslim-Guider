@@ -26,16 +26,13 @@ async function initMap() {
         handleLocationError(true, map.getCenter());
       }
     );
-  } else {
-    // Browser doesn't support Geolocation
-    handleLocationError(false, map.getCenter());
   }
 }
 
 function searchMosques(location) {
   const request = {
     location: location,
-    radius: "5000", // 5km radius
+    radius: "7000", // 7km radius
     type: ["mosque"],
   };
 
@@ -43,17 +40,11 @@ function searchMosques(location) {
   service.nearbySearch(request, callback);
 }
 
-let markers = [];
 function callback(results, status) {
   if (status == google.maps.places.PlacesServiceStatus.OK) {
     results.sort((a, b) => b.rating - a.rating); // Sort results by rating in descending order
     const tableBody = document.querySelector("#mosqueTable tbody");
     tableBody.innerHTML = ""; // Clear previous results
-
-    // Clear previous markers
-    markers.forEach((marker) => marker.setMap(null));
-    markers = [];
-
     let row;
     for (let i = 0; i < results.length; i++) {
       if (i % 4 === 0) {
@@ -63,14 +54,6 @@ function callback(results, status) {
       const cell = document.createElement("td");
       cell.appendChild(createMosqueCard(results[i]));
       row.appendChild(cell);
-
-      // Create marker for each mosque
-      const marker = new google.maps.Marker({
-        position: results[i].geometry.location,
-        map: map,
-        title: results[i].name,
-      });
-      markers.push(marker);
     }
   }
 }
@@ -201,11 +184,4 @@ document.addEventListener("DOMContentLoaded", () => {
     .addEventListener("click", handleSearch);
   initMap();
 });
-
-function handleLocationError(browserHasGeolocation, pos) {
-  alert(
-    browserHasGeolocation
-      ? "Error: The Geolocation service failed."
-      : "Error: Your browser doesn't support geolocation."
-  );
-}
+F;
