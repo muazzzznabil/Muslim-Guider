@@ -24,35 +24,56 @@ img {
     overflow: hidden;
 }
 
-.text {
-    color: #f2f2f2;
-    font-size: 1vw;
-    padding: 8px 12px;
-    /* background-color: rgba(0, 0, 0, 0.5); */
+.text-container {
     position: absolute;
-    bottom: 50%;
-    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     text-align: center;
+    color: #f2f2f2;
+    opacity: 1;
+    z-index: 1;
+}
+
+.texts h1 {
+    font-size: 4vw;
+    opacity: 0;
+    transition: opacity 1s, transform 1s;
+    transform: scale(0.7);
+    animation: scaleUp 1.5s forwards;
+}
+
+.texts p {
+    font-size: 1vw;
+    padding: 10px;
     opacity: 0;
     transform: translateY(20px);
     animation: fadeInUp 1.5s forwards;
- 
+    background-color: black;
 }
-
 
 @keyframes fadeInUp {
     from {
         opacity: 0;
         transform: translateY(20px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
     }
 }
 
-.text h1 {
-    font-size: 4vw;
+@keyframes scaleUp {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
 }
 
 .fade {
@@ -63,27 +84,29 @@ img {
 }
 
 @-webkit-keyframes fade {
-    from { opacity: 0.4; }
-    to { opacity: 1; }
+    from {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @keyframes fade {
-    from { opacity: 0.4; }
-    to { opacity: 1; }
+    from {
+        opacity: 0.4;
+    }
+
+    to {
+        opacity: 1;
+    }
 }
 
 @media only screen and (max-width: 300px) {
-    .text { font-size: 11px; }
-}
-
-.title h1 {
-    font-size: 7vw;
-}
-
-.title p {
-    font-size: 1.5vw;
-    margin-top: 2vh;
-    
+    .text {
+        font-size: 11px;
+    }
 }
 
 @media (max-width: 600px) {

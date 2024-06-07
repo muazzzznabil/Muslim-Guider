@@ -3,14 +3,11 @@ body {
   margin: 0;
   padding: 0;
 }
-/* header {
-  background-color: #333;
-  color: white;
-  padding: 1rem;
-  text-align: center;
-} */
 .containers {
   padding: 1rem;
+}
+.logoFoot {
+  text-align: center;
 }
 .search-bar {
   display: flex;
@@ -26,13 +23,11 @@ body {
   width: 18%;
   padding: 0.5rem;
   font-size: 1rem;
-  background-color: #4F6F52;
+  background-color: #4f6f52;
   color: white;
   border: none;
   cursor: pointer;
-}
-.template-card{
-  padding:1rem;
+  border-radius: 5px;
 }
 .map {
   width: 100%;
@@ -74,9 +69,34 @@ td {
   margin: 0;
 }
 .current-location {
-  background-color: #719274;
+  background-color: #79a37d;
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 1rem;
   margin-bottom: 1rem;
+  box-shadow: 0 0 5px #5b7b5e;
+}
+.searchbtn {
+  border-radius: 10px;
+  box-shadow: 0 0 7px black;
+}
+.searchbtn:hover {
+  background-color: #ccc;
+  color: black;
+  font-weight: 650;
+  box-shadow: 0 0 3px #4f6f52;
+}
+.searchInput {
+  border-radius: 5px;
+  box-shadow: 0 0 3px black;
+}
+@media (max-width: 768px) {
+  .search-bar input, .search-bar button {
+      width: 100%;
+      margin-bottom: 1rem;
+  }
+  td {
+      width: 100%;
+      display: block;
+  }
 }

@@ -1,6 +1,10 @@
 function getPrayerTimes() {
     try {
         var city = document.getElementById('city').value.trim();
+        // Convert first letter of each word to uppercase
+        city = city.replace(/\b\w/g, function (char) {
+            return char.toUpperCase();
+        });
         var area = getZone(city);
         console.log("manual: ");
 
