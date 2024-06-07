@@ -1,183 +1,184 @@
 html {
-    height: 100%;
-    background: linear-gradient(to bottom, #1A4D2E, #E8DFCA) no-repeat fixed;
+  height: 100%;
+  background-color: #e8f3e2;
 }
 
 body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    padding: 0;
-    /* display: flex;
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  /* display: flex;
     flex-direction: column;
     align-items: center; */
 }
 
 .top {
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    border-bottom: 3px solid rgb(0, 0, 0);
-    width: 90vw;
-    margin: 0 4vw 4vw 4vw;
-    overflow: hidden;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border-bottom: 3px solid rgb(0, 0, 0);
+  width: 90vw;
+  margin: 0 4vw 4vw 4vw;
+  overflow: hidden;
 }
 
 .left {
-    width: 50%;
-    padding: 3vw;
-    color: white;
-    display: flex;
-    align-items: center; /* Centering h1 vertically */
+  width: 50%;
+  padding: 3vw;
+  color: white;
+  display: flex;
+  align-items: center; /* Centering h1 vertically */
 }
 
 .right {
-    width: 50%;
-    padding: 3vw;
-    /* background-color: #000000; */
-    display: flex;
-    justify-content: flex-end; /* Pushing time to the end */
-    align-items: center; /* Centering h1 vertically */
+  width: 50%;
+  padding: 3vw;
+  /* background-color: #000000; */
+  display: flex;
+  justify-content: flex-end; /* Pushing time to the end */
+  align-items: center; /* Centering h1 vertically */
 }
 
 #time {
-    color: white; /* Ensure time is visible against the black background */
+  color: white; /* Ensure time is visible against the black background */
 }
 
 h1 {
-    text-shadow: 2px 2px 10px #000000;
+  text-shadow: 2px 2px 10px #000000;
 }
 
 .content {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .schedule {
-    width: 100%;
-    max-width: 80vw;
-    background-color: rgb(255, 255, 255);
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
+  width: 100%;
+  max-width: 80vw;
+  background-color: rgb(255, 255, 255);
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
 }
 
 #prayerForm {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 #city {
-    width: 100%;
-    padding: 10px;
-    margin-bottom: 20px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
 }
 
 button {
-    padding: 10px 20px;
-    background-color: #4F6F52;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
+  padding: 10px 20px;
+  background-color: #4f6f52;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
 }
 
 button:hover {
-    background-color: #E8DFCA;
-    color: black;
+  background-color: #e8dfca;
+  color: black;
 }
 
 table {
-    width: 100%;
-    margin-top: 20px;
-    border: none;
+  width: 100%;
+  margin-top: 20px;
+  border: none;
 }
 
 td {
-    padding: 10px;
-    text-align: center;
+  padding: 10px;
+  text-align: center;
 }
 
 .prayer-time {
-    display: flex;
-    justify-content: space-between;
-    padding: 10px 0;
-    border-bottom: 1px solid #e0e0e0;
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #e0e0e0;
 }
 
 .prayer-time:last-child {
-    border-bottom: none;
+  border-bottom: none;
 }
 
 .prayer-name {
-    font-weight: bold;
-    color: #333;
+  font-weight: bold;
+  color: #333;
 }
 
 .prayer-value {
-    color: #3b4046;
+  color: #3b4046;
 }
 
 .resultPray {
-    background-color: #F5EFE6;
-    padding: 5vh;
-    border-radius: 10px;
+  background-color: #f5efe6;
+  padding: 5vh;
+  border-radius: 10px;
 }
 
 .currentLoc {
-    margin-top: 20px;
+  margin-top: 20px;
 }
 
 .currentLoc {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .loc {
-    border-radius: 20px;
-    background-color: #4F6F52;
-    padding: 10px;
-    margin-bottom: 5vh;
+  border-radius: 20px;
+  background-color: #4f6f52;
+  padding: 10px;
+  margin-bottom: 5vh;
 }
 
 .loc:hover {
-    background-color: #E8DFCA;
-    color: black;
+  background-color: #e8dfca;
+  color: black;
 }
 
 #result {
-    border-bottom: 1px solid #222222;
+  border-bottom: 1px solid #222222;
 }
 
 #share {
-    border-radius: 20px;
+  border-radius: 20px;
 }
 
 @media (max-width: 600px) {
-    .top {
-        flex-direction: column;
-        align-items: center;
-    }
+  .top {
+    flex-direction: column;
+    align-items: center;
+  }
 
-    .left h1, .right h1 {
-        font-size: 20px;
-    }
+  .left h1,
+  .right h1 {
+    font-size: 20px;
+  }
 
-    #prayerForm {
-        width: 100%;
-    }
+  #prayerForm {
+    width: 100%;
+  }
 
-    button {
-        width: 100%;
-        padding: 15px;
-    }
+  button {
+    width: 100%;
+    padding: 15px;
+  }
 
-    #city {
-        max-width: none;
-        width: 100%;
-    }
+  #city {
+    max-width: none;
+    width: 100%;
+  }
 }
