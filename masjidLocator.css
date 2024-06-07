@@ -52,6 +52,9 @@ td {
   margin-bottom: 1rem;
   cursor: pointer;
   transition: background-color 0.3s;
+  min-height:400px;
+  max-height:470px;
+
 }
 .mosque-card:hover {
   background-color: #f0f0f0;

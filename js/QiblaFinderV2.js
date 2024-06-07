@@ -1,17 +1,21 @@
+let currentPos;
+let map;
+let geocoder;
+
 const getLatitude = () => {
   return new Promise((resolve, reject) => {
     const status = document.querySelector(".latitude");
 
     const success = (position) => {
-      console.log(position);
       const lat = position.coords.latitude;
       status.textContent = `Latitude: ${lat}°`;
       resolve(lat);
     };
 
     const error = () => {
-      status.textContent = "Unable to retrieve your location";
-      reject(new Error("Unable to retrieve your location"));
+      const errorMessage = "Unable to retrieve your location";
+      status.textContent = errorMessage;
+      reject(new Error(errorMessage));
     };
 
     navigator.geolocation.getCurrentPosition(success, error);
@@ -23,75 +27,44 @@ const getLongitude = () => {
     const status = document.querySelector(".longitude");
 
     const success = (position) => {
-      console.log(position);
       const long = position.coords.longitude;
       status.textContent = `Longitude: ${long}°`;
       resolve(long);
     };
 
     const error = () => {
-      status.textContent = "Unable to retrieve your location";
-      reject(new Error("Unable to retrieve your location"));
+      const errorMessage = "Unable to retrieve your location";
+      status.textContent = errorMessage;
+      reject(new Error(errorMessage));
     };
 
     navigator.geolocation.getCurrentPosition(success, error);
   });
 };
 
-// Method to get Qibla Direction Manually :
-function getQiblaDirectionManually() {
-  event.preventDefault();
-  var lat = document.getElementById("latitude").value;
-  var lng = document.getElementById("longitude").value;
-
-  var url = "https://api.aladhan.com/v1/qibla/" + lat + "/" + lng;
-  fetch(url)
-    .then((response) => response.json())
-    .then((data) => {
-      document.getElementById("qibla-direction").innerHTML =
-        data.data.direction;
-    });
+function handleSearchBar() {
+  const address = document.getElementById("search").value;
+  geocodeAddress(address);
+}
+async function handleSearchButton() {
+  const lat = await getLatitude();
+  const lng = await getLongitude();
+  initMap(lat, lng);
+  getQiblaDirectionAuto(lng, lat);
+  console.log(
+    "Latitude: " +
+      (await getLatitude()) +
+      " Longitude: " +
+      (await getLongitude())
+  );
 }
 
-// Method to get Qibla Direction Automatically :
-function getQiblaDirectionAuto() {
-  const statusLat = document.querySelector(".latitude");
-  const statusLng = document.querySelector(".longitude");
-  const errorMessage = document.querySelector(".errorMessage");
+async function initMap(lat, lng) {
+  geocoder = new google.maps.Geocoder();
 
-  event.preventDefault();
+  console.log(lat + " and " + lng);
 
-  const success = (position) => {
-    console.log(position);
-    const lat = position.coords.latitude;
-    const lng = position.coords.longitude;
-    statusLat.textContent = `Latitude: ${lat}°`;
-    statusLng.textContent = `Longitude: ${lng}°`;
-    var url = "https://api.aladhan.com/v1/qibla/" + lat + "/" + lng;
-    console.log(lat + "And " + lng);
-
-    fetch(url)
-      .then((response) => response.json())
-      .then((data) => {
-        let direction = data.data.direction;
-        let directionRounded = Math.round(direction * 10) / 10;
-
-        document.getElementById("qibla-direction").innerHTML =
-          directionRounded + "°";
-        console.log(data.data.direction);
-        console.log(directionRounded);
-      });
-  };
-  const error = () => {
-    errorMessage.textContent = "Unable to retrieve your location";
-  };
-  navigator.geolocation.getCurrentPosition(success, error);
-}
-
-async function initMap() {
   try {
-    const lat = await getLatitude();
-    const lng = await getLongitude();
     const location = { lat: lat, lng: lng };
 
     const map = new google.maps.Map(document.getElementById("map"), {
@@ -99,7 +72,7 @@ async function initMap() {
       center: location,
     });
 
-    // Marker for user's location
+    // Marker for user's
     const userMarker = new google.maps.Marker({
       position: location,
       map: map,
@@ -108,6 +81,12 @@ async function initMap() {
 
     // Coordinates for the Kaaba
     const kaabaLocation = { lat: 21.4225, lng: 39.8262 };
+    const distance = calculateDistance(location, kaabaLocation);
+
+    // Update the UI element with the distance
+    document.getElementById("qibla-distance").textContent = `${distance.toFixed(
+      2
+    )} km`;
 
     // Marker for the Kaaba
     const kaabaMarker = new google.maps.Marker({
@@ -193,4 +172,70 @@ async function initMap() {
   } catch (error) {
     console.error(error);
   }
+}
+
+function geocodeAddress(address) {
+  geocoder.geocode({ address: address }, (results, status) => {
+    if (status === "OK") {
+      const location = results[0].geometry.location;
+      const latitude = location.lat();
+      const longitude = location.lng();
+
+      initMap(latitude, longitude);
+      getQiblaDirectionAuto(longitude, latitude);
+
+      console.log(`Latitude: ${latitude}, and Longitude: ${longitude}`);
+    } else {
+      alert("Geocode was not successful for the following reason: " + status);
+    }
+  });
+}
+
+function calculateDistance(userLocation, kaabaLocation) {
+  const p1Lat = (userLocation.lat * Math.PI) / 180;
+  const p2Lat = (kaabaLocation.lat * Math.PI) / 180;
+  const dLat = p2Lat - p1Lat;
+  const dLon = ((kaabaLocation.lng - userLocation.lng) * Math.PI) / 180;
+
+  const R = 6371e3; // Earth's radius in kilometers
+
+  const a =
+    Math.sin(dLat / 2) * Math.sin(dLat / 2) +
+    Math.cos(p1Lat) * Math.cos(p2Lat) * Math.sin(dLon / 2) * Math.sin(dLon / 2);
+  const c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1 - a));
+
+  return R * c;
+}
+
+function getQiblaDirectionAuto(longitude, latitude) {
+  const statusLat = document.querySelector(".latitude");
+  const statusLng = document.querySelector(".longitude");
+  const errorMessage = document.querySelector(".errorMessage");
+
+  //   event.preventDefault();
+
+  const success = (position) => {
+    console.log(position);
+
+    statusLat.textContent = `Latitudes: ${latitude}°`;
+    statusLng.textContent = `Longitude: ${longitude}°`;
+    var url = "https://api.aladhan.com/v1/qibla/" + latitude + "/" + longitude;
+    console.log(latitude + " Qibla  " + longitude);
+
+    fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        let direction = data.data.direction;
+        let directionRounded = Math.round(direction * 10) / 10;
+
+        document.getElementById("qibla-direction").innerHTML =
+          directionRounded + "°";
+        console.log(data.data.direction);
+        console.log(directionRounded);
+      });
+  };
+  const error = () => {
+    errorMessage.textContent = "Unable to retrieve your location";
+  };
+  navigator.geolocation.getCurrentPosition(success, error);
 }
