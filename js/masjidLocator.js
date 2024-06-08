@@ -92,6 +92,7 @@ function createMosqueCard(place) {
       "_blank"
     );
   });
+
   const image = document.createElement("img");
   image.src = place.photos ? place.photos[0].getUrl() : "images/imagePlaceholder.jpg";
   image.alt = place.name;
