@@ -46,15 +46,16 @@ td {
 }
 .mosque-card {
   background-color: #9ebda1;
-  border: 1px solid #ddd;
   border-radius: 5px;
   padding: 1rem;
   margin-bottom: 1rem;
   cursor: pointer;
   transition: background-color 0.3s;
-  min-height:400px;
-  max-height:470px;
-
+  min-height: 400px;
+  max-height: 470px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 .mosque-card:hover {
   background-color: #f0f0f0;
@@ -73,15 +74,19 @@ td {
 }
 .current-location {
   background-color: #79a37d;
-  border: 1px solid #ccc;
   border-radius: 5px;
   padding: 1rem;
   margin-bottom: 1rem;
   box-shadow: 0 0 5px #5b7b5e;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 .searchbtn {
   border-radius: 10px;
-  box-shadow: 0 0 7px black;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+    rgba(0, 0, 0, 0.3) 0px 30px 60px -30px,
+    rgba(10, 37, 64, 0.35) 0px -2px 6px 0px inset;
 }
 .searchbtn:hover {
   background-color: #ccc;
@@ -91,15 +96,19 @@ td {
 }
 .searchInput {
   border-radius: 5px;
-  box-shadow: 0 0 3px black;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 10px 36px 0px,
+    rgba(0, 0, 0, 0.06) 0px 0px 0px 1px;
+  border: 0;
 }
+
 @media (max-width: 768px) {
-  .search-bar input, .search-bar button {
-      width: 100%;
-      margin-bottom: 1rem;
+  .search-bar input,
+  .search-bar button {
+    width: 100%;
+    margin-bottom: 1rem;
   }
   td {
-      width: 100%;
-      display: block;
+    width: 100%;
+    display: block;
   }
 }
