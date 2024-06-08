@@ -212,8 +212,6 @@ function getQiblaDirectionAuto(longitude, latitude) {
   const statusLng = document.querySelector(".longitude");
   const errorMessage = document.querySelector(".errorMessage");
 
-  //   event.preventDefault();
-
   const success = (position) => {
     console.log(position);
 
