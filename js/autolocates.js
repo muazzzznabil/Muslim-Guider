@@ -48,8 +48,6 @@ function getAPI(bdcAPI) {
 
 function getPrayerTimesAuto(area) {
   try {
-    // var city = document.getElementById('city').value.trim();
-    // var area = getZone(city);
 
     console.log("parameter parse : ");
 
