@@ -186,7 +186,7 @@ function geocodeAddress(address) {
 
       console.log(`Latitude: ${latitude}, and Longitude: ${longitude}`);
     } else {
-      alert("Geocode was not successful for the following reason: " + status);
+      alert("The Location could not be found : " + status);
     }
   });
 }
