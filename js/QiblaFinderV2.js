@@ -68,7 +68,7 @@ async function initMap(lat, lng) {
     const location = { lat: lat, lng: lng };
 
     const map = new google.maps.Map(document.getElementById("map"), {
-      zoom: 18, // Increase the zoom level for a closer view
+      zoom: 15, // Increase the zoom level for a closer view
       center: location,
     });
 
