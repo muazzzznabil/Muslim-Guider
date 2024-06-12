@@ -77,3 +77,8 @@ h2 {
 a {
   text-decoration: none;
 }
+
+.textMember a {
+  color: rgb(18, 27, 18);
+  font-weight: 600;
+}
