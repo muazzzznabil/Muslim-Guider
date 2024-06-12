@@ -52,3 +52,23 @@
 h2 {
   text-decoration: none;
 }
+
+.epicationMember {
+  display: flex;
+  justify-content: center;
+  margin: 50px 0 0 0;
+}
+.epicationMember img {
+  border-radius: 50%;
+  width: 200px;
+  height: 200px;
+  object-fit: cover;
+  margin: 20px;
+}
+.textMember {
+  text-align: center;
+}
+
+.textMember a:link {
+  text-decoration: none;
+}
