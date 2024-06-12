@@ -10,6 +10,10 @@
   margin: 40px;
 }
 
+.logoMuslimGuider img {
+  width: 300px;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -56,6 +60,7 @@ h2 {
 
 .epicationMember {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   margin: 50px 0 0 0;
 }
