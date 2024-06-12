@@ -51,6 +51,7 @@
 
 h2 {
   text-decoration: none;
+  font-size: 1.7em;
 }
 
 .epicationMember {
@@ -70,5 +71,9 @@ h2 {
 }
 
 .textMember a:link {
+  text-decoration: none;
+}
+
+a {
   text-decoration: none;
 }
