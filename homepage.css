@@ -30,7 +30,7 @@ img {
     left: 50%;
     transform: translate(-50%, -50%);
     text-align: center;
-    color: #f2f2f2;
+    color: #1a4d2e;
     opacity: 1;
     z-index: 1;
 }
@@ -41,10 +41,12 @@ img {
     transition: opacity 1s, transform 1s;
     transform: scale(0.7);
     animation: scaleUp 1.5s forwards;
+    text-shadow: 2px 2px #f5efe6;
 }
 
 .texts p {
     font-size: 1vw;
+    color: #f2f2f2;
     padding: 10px;
     opacity: 0;
     transform: translateY(20px);
