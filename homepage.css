@@ -1,122 +1,123 @@
-html, body {
-    height: 100%;
-    margin: 0;
-    padding: 0;
-    font-family: Arial, sans-serif;
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
 }
 
 .mySlides {
-    display: none;
-    height: 100vh;
+  display: none;
+  height: 100vh;
 }
 
-img {
-    vertical-align: middle;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
+.slideshow-container img {
+  vertical-align: middle;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
 .slideshow-container {
-    position: relative;
-    width: 100%;
-    height: 100vh;
-    overflow: hidden;
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
 }
 
 .text-container {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-    color: #1a4d2e;
-    opacity: 1;
-    z-index: 1;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+  color: #1a4d2e;
+  opacity: 1;
+  z-index: 1;
 }
 
 .texts h1 {
-    font-size: 4vw;
-    opacity: 0;
-    transition: opacity 1s, transform 1s;
-    transform: scale(0.7);
-    animation: scaleUp 1.5s forwards;
-    text-shadow: 2px 2px #f5efe6;
+  font-size: 4vw;
+  opacity: 0;
+  transition: opacity 1s, transform 1s;
+  transform: scale(0.7);
+  animation: scaleUp 1.5s forwards;
+  text-shadow: 2px 2px #f5efe6;
 }
 
 .texts p {
-    font-size: 1vw;
-    color: #f2f2f2;
-    padding: 10px;
-    opacity: 0;
-    transform: translateY(20px);
-    animation: fadeInUp 1.5s forwards;
-    background-color: black;
+  font-size: 1vw;
+  color: #f2f2f2;
+  padding: 10px;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 1.5s forwards;
+  background-color: black;
 }
 
 @keyframes fadeInUp {
-    from {
-        opacity: 0;
-        transform: translateY(20px);
-    }
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
 
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes scaleUp {
-    from {
-        opacity: 0;
-        transform: scale(0.7);
-    }
+  from {
+    opacity: 0;
+    transform: scale(0.7);
+  }
 
-    to {
-        opacity: 1;
-        transform: scale(1);
-    }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
 }
 
 .fade {
-    -webkit-animation-name: fade;
-    -webkit-animation-duration: 1.5s;
-    animation-name: fade;
-    animation-duration: 1.5s;
+  -webkit-animation-name: fade;
+  -webkit-animation-duration: 1.5s;
+  animation-name: fade;
+  animation-duration: 1.5s;
 }
 
 @-webkit-keyframes fade {
-    from {
-        opacity: 0.4;
-    }
+  from {
+    opacity: 0.4;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes fade {
-    from {
-        opacity: 0.4;
-    }
+  from {
+    opacity: 0.4;
+  }
 
-    to {
-        opacity: 1;
-    }
+  to {
+    opacity: 1;
+  }
 }
 
 @media only screen and (max-width: 300px) {
-    .text {
-        font-size: 11px;
-    }
+  .text {
+    font-size: 11px;
+  }
 }
 
 @media (max-width: 600px) {
-    .title h1 {
-        font-size: 10vw;
-    }
+  .title h1 {
+    font-size: 10vw;
+  }
 
-    .title p {
-        font-size: 3vw;
-    }
+  .title p {
+    font-size: 3vw;
+  }
 }
