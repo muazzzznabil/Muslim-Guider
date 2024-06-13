@@ -54,7 +54,7 @@ async function handleSearchButton() {
   console.log(
     "Latitude: " +
       (await getLatitude()) +
-      " Longitude: " +
+      "test  Longitude: " +
       (await getLongitude())
   );
 }
