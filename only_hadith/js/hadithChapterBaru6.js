@@ -1,3 +1,4 @@
+
 function searchWord() {
     let searchInput = document.getElementById('searchInput').value.toLowerCase();
     let table = document.getElementById('all-hadith');
@@ -38,7 +39,8 @@ function getQueryParam(param) {
 // Get the value from URL parameters
 const value = getQueryParam('value');
 
-let apiUrlChapter='https://api.hadith.gading.dev/books/ahmad?range=1-300';
+let apiUrlChapter='https://api.hadith.gading.dev/books/muslim?range=1-300';
+
 
 fetch(apiUrlChapter)
   .then(response => response.json())
@@ -62,3 +64,5 @@ fetch(apiUrlChapter)
   .catch(error => {
     console.error('Error fetching chapters:', error);
   });
+
+

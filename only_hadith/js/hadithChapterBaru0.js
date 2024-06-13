@@ -38,7 +38,7 @@ function getQueryParam(param) {
 // Get the value from URL parameters
 const value = getQueryParam('value');
 
-let apiUrlChapter='https://api.hadith.gading.dev/books/ahmad?range=1-300';
+let apiUrlChapter='https://api.hadith.gading.dev/books/abu-daud?range=1-300';
 
 fetch(apiUrlChapter)
   .then(response => response.json())
