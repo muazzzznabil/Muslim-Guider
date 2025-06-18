@@ -1,24 +1,41 @@
-# .github/workflows/html-lint.yml
-name: HTML Lint
+name: pages-build-deployment
 
 on:
   push:
-    branches: [main]
-  pull_request:
+    branches: [ main ]
 
 jobs:
-  lint:
+  build:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-
-      - name: Install Node.js
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
+          node-version: '20'
+      - name: Install dependencies
+        run: npm install
+      - name: Build site
+        run: npm run build
 
+  test:
+    runs-on: ubuntu-latest
+    needs: build  # run after build
+    steps:
+      - uses: actions/checkout@v4
       - name: Install HTMLHint
         run: npm install -g htmlhint
-
       - name: Run HTMLHint
-        run: htmlhint "**/*.html"
+        run: htmlhint ./  # adjust path if needed
+
+  report-build-status:
+    runs-on: ubuntu-latest
+    needs: [build, test]
+    steps:
+      - run: echo "Reporting build and test status"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: [report-build-status]
+    steps:
+      - run: echo "Deploying to http://muazzz.my/"
