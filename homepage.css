@@ -34,6 +34,8 @@ body {
   color: #1a4d2e;
   opacity: 1;
   z-index: 1;
+  border-radius: 50px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
 }
 
 .texts h1 {
