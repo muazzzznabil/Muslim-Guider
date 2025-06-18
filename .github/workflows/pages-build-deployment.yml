@@ -1,0 +1,61 @@
+name: pages-build-deployment
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - '**.html'
+      - '**.css'
+      - '**.js'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Start Build Timer
+        run: echo "BUILD_START=$(date +%s)" >> $GITHUB_ENV
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      - name: Install dependencies
+        run: npm install
+
+      - name: Build site
+        run: npm run build
+
+      - name: End Build Timer
+        run: |
+          BUILD_END=$(date +%s)
+          echo "Build time: $((BUILD_END - BUILD_START)) seconds"
+
+  test:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install HTMLHint
+        run: npm install -g htmlhint
+      - name: Run HTMLHint
+        run: htmlhint ./  # change path as needed
+
+  report-build-status:
+    runs-on: ubuntu-latest
+    needs: [build, test]
+    steps:
+      - run: echo "✅ Build and Test Complete"
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: report-build-status
+    steps:
+      - name: Simulate Deployment
+        run: echo "🚀 Deploying to http://muazzz.my/"
+
+      - name: Health Check (Stub)
+        run: echo "🧪 Health check passed (placeholder)" 
+        # Replace with puppeteer or other real health-check logic
