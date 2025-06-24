@@ -30,7 +30,7 @@ jobs:
       - name: Install HTMLHint
         run: npm install -g htmlhint
       - name: Run HTMLHint
-        run: htmlhint ./  # change path as needed
+        run: htmlhint ./ 
 
   report-build-status:
     runs-on: ubuntu-latest
@@ -47,4 +47,4 @@ jobs:
 
       - name: Health Check (Stub)
         run: echo "🧪 Health check passed" 
-        # Replace with puppeteer or other real health-check logic
+       
