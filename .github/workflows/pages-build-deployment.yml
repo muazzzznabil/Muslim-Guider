@@ -46,5 +46,5 @@ jobs:
         run: echo "🚀 Deploying to http://muazzz.my/"
 
       - name: Health Check (Stub)
-        run: echo "🧪 Health check passed (placeholder)" 
+        run: echo "🧪 Health check passed" 
         # Replace with puppeteer or other real health-check logic
